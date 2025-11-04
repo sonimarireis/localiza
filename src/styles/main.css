@@ -20,8 +20,6 @@ body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   background: var(--bg);
   color: var(--fg);
-  display: flex;
-  place-items: center;
 }
 
 #app {
@@ -36,34 +34,34 @@ a {
   color: var(--accent);
 }
 
+.body-container {
+  display: flex;
+  margin-top: 150px; /* espaço para o header fixo */
+}
+
 /* Header */
 .header-container {
-  position: fixed;       /* fixa no topo */
-  top: 0;                /* começa no topo da tela */
-  left: 0;               /* alinhado à esquerda */
-  width: 100%;           /* ocupa toda a largura */
-  height: 150px;
-  /* Alterado de 250px para auto ou um min-height */
+  position: fixed;       
+  top: 0;                
+  left: 0;               
+  width: 100%;        
   min-height: 120px;
-  /* Altura mínima para telas menores */
   background-color: #ebe70b;
   padding: 10px 20px;
   display: flex;
   flex-direction:row;
-  /* Padrão em mobile: elementos um abaixo do outro */
   align-items: center;
-  justify-content: space-between; /* nome à esquerda, login à direita */
-
+  justify-content: space-between; 
 }
+
 .logo {
-  /* Removido position: absolute para fluir com o header */
   position: static;
   transform: none;
   text-align: center;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-  /* Espaço abaixo do logo em mobile */
+
 }
 
 .titulo {
@@ -72,21 +70,20 @@ a {
   align-items: center;
 }
 
-/* Formulário de login no header */
 .login-header {
   display: flex;
   align-items: center;
-  gap: 5px; /* espaço entre campos */
-  justify-content: space-between; /* nome à esquerda, login à direita */
+  gap: 5px; 
+  justify-content: space-between; 
   white-space:30px;
 }
 
 .login-header input {
   font-size: 15px;        
-  padding: 10px 15px;      /* aumenta o espaço interno */
-  border: 1px solid #ccc;  /* borda leve para visualização */
-  border-radius: 4px;      /* cantos arredondados */
-  width:100px;            /* largura fixa (ajuste conforme necessário) */
+  padding: 10px 15px;     
+  border: 1px solid #ccc;  
+  border-radius: 4px;    
+  width:100px;           
 }
   
 .login-header .btn-entrar {
@@ -122,11 +119,7 @@ a {
 } 
 
 nav {
-  position: fixed;
-  top: 150px; /* começa logo abaixo do header fixo */
   left: 0;
-  width: 300px; /* largura do menu lateral */
-  height: calc(100vh - 150px); /* ocupa o restante da altura da tela */
   background-color: #ebe70b;
   padding: 20px 10px;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
@@ -134,7 +127,10 @@ nav {
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  z-index: 10; /* garante que o nav fique sobre o main */
+  z-index: 10; 
+  position: relative;
+  width: 300px;
+  height: auto;
 }
 
 .nav-container {
@@ -150,7 +146,7 @@ nav {
   padding: 5px;
   border-radius: 8px;
   box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-  width: 100%; /* ocupa toda a largura disponível do menu */
+  width: 100%; 
 }
 
 .pesquisar-input {
@@ -189,8 +185,7 @@ nav ul li a {
   font-weight: bold;
   text-align: center;
   padding: 8px;
-  border-radius: 6px;
-  
+  border-radius: 6px;  
 }
 
 nav ul li a:hover {
@@ -199,8 +194,8 @@ nav ul li a:hover {
 }
 
 main {
-  margin-top: 150px; /* começa abaixo do header */
-  margin-left: 300px; /* começa à direita do menu lateral */
+  margin-top: 220px; 
+  margin-left: 300px;
   padding: 20px;
   background-color: #f9fafb;
   min-height: calc(100vh - 150px);
@@ -208,4 +203,95 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: auto; 
+  flex: 1;
+}
+   
+
+footer {
+  background:  #ebe70b; 
+  color: var(--fg);          
+  padding: 50px 50px;
+}
+
+.footer-container {
+  display: grid;              
+  justify-content: space-between; /* distribui igualmente */
+  align-items: flex-start;    /* todos alinhados no topo */
+  gap: 30px;                  /* espaço entre blocos */
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content:space-between;
+  align-items: center;
+  overflow-y: auto; 
+}
+
+
+/* ===== BLOCO MAP ===== */
+.map h5 {
+  margin-bottom: 10px;
+   color: #bb260c;
+   font-size: 20px;
+}
+
+/* ===== BLOCO LINKS ===== */
+
+
+.footer-links h5 {
+  margin-bottom: 15px;
+  color: #bb260c;
+  font-size: 20px;
+}
+
+.footer-links a {
+  display: flex;             /* deixa o ícone + texto lado a lado */
+  align-items: center;       /* alinha no meio vertical */
+  margin: 10px 0;
+  color:black;               
+  text-decoration: none;
+}
+
+.footer-links img {
+  margin-right: 10px;        /* distância entre ícone e texto */
+  filter: brightness(0) invert(1); /* deixa ícone branco */
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-links img:hover {
+  transform: scale(1.1);
+  /* filtro aproximado para #3ac9d3 */
+  filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1941%) hue-rotate(150deg) brightness(92%) contrast(94%);
+}
+
+.footer-links a:hover{
+  color: #d3d3d3;
+}
+/* ===== BLOCO COPYRIGHT ===== */
+.copy {
+  text-align: center;   /* centraliza */
+}
+
+.copy h5 {
+  margin-bottom: 10px;  /* separa agradecimento do copy */
+   color: #bb260c;
+   font-size: 20px;
+}
+
+.copy p {
+  font-weight: bold;
+  color:black;
+  font-size: 14px;
+  opacity: 0.8;        /* deixa mais suave */
+}
+
+.copy .copy-marcas {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 35px; /* espaço entre as imagens */
+}
+
+.copy .copy-marcas img {
+  width: 110px;
+  height: auto;
 }
