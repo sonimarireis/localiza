@@ -3,12 +3,60 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fullstack Pack</title>
+    <link rel="stylesheet" type="text/css" href="../src/styles/main.css">
+    <link rel="icon" href="../img/logo.png" type="image/x-icon">
+    <title> Localiza </title>
   </head>
+
   <body>
-    <div id="app">Pronto para começar!</div>
-    <script type="module" src="/src/scripts/index.js"></script>
-  </body>
+    <header>
+      <div class="header-container">
+        
+      <div class="logo">
+        <br>      
+        <img src="../img/logo.png" height="170px" width="170px" alt="foto_logo">
+      </div>    
+
+      <div class="titulo">
+        <h1> Localiza </h1>
+      </div>
+    
+      <form class="login-header" method="post" name="login">
+        <input type="text0" class="campo" placeholder="Usuário" name="usuario">
+        <input type="password" class="campo" placeholder="Senha" name="senha">
+        <button type="submit" class="btn-entrar">Entrar</button>
+        
+      </form>
+    </div>
+
+    </header>
+
+    <nav>
+      <div class="nav-container">  
+        
+        <form class="pesquisar-form">
+          <input type="text" placeholder="Pesquisar" name="pesquisa" class="pesquisar-input">
+          <button type="submit" class="pesquisar-button">🔍</button>
+        </form>
+         
+        <!-- Lista de links abaixo -->
+        <ul>
+          <li><a href="index.html">🏠 Home </a></li>
+          <li><a href="clientes.html">📦 Clientes </a></li>
+          <li><a href="produtos.html">👥 Produtos </a></li>
+          <li><a href="vendas.html">💰 Vendas </a></li>
+          <li><a href="#">⚙️ Sair </a></li>
+        </ul>
+      </div>
+    </nav>
+    
+  
+      <main>      
+        <h2>Bem-vindo ao Sistema</h2>
+        <p>Escolha uma opção no menu à esquerda.</p>
+      </main>
+      
+    </body>
 </html>
 
 
