@@ -19,7 +19,6 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   background: var(--bg);
-  color: var(--fg);
 }
 
 #app {
@@ -30,13 +29,8 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
-a {
-  color: var(--accent);
-}
-
 .body-container {
-  display: flex;
-  margin-top: 150px; /* espaço para o header fixo */
+  argin-top: 150px; /* espaço para o header fixo */
 }
 header {
   width: 100%;
@@ -80,7 +74,7 @@ header {
 
 .login-header input {
   font-size: 15px;
-  padding: 8px 10px;
+  padding: 5px 8px;
   border: 1px solid #ccc;
   border-radius: 4px;     
 }
@@ -165,21 +159,32 @@ nav ul li a:hover {
 }
 
 main {
-  margin-top: 220px; 
-  margin-left: 300px;
+  margin-top: 40px; /* distância entre nav e conteúdo */
   padding: 20px;
   background-color: #f9fafb;
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 200px); /* altura ajustada */
+  
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: center;  /* centraliza horizontalmente */
+  justify-content: flex-start; /* mantém o conteúdo no topo do main */
+  text-align: center; /* centraliza o texto */
+}
+
+main h2 {
+  font-size: 32px;
+  color: #bb260c;
+  font-weight: bold;
+  margin-bottom: 20px; /* espaço abaixo para o texto seguinte */ 
+  margin-top: 30px; 
+
 }
 
 footer {
   background:  #ebe70b; 
   color: var(--fg);          
   padding: 50px 50px;
+  font-size: 32px;
 }
 
 .footer-container {
@@ -201,6 +206,12 @@ footer {
    font-size: 25px;
 }
 
+footer {
+  background: #ebe70b;
+  color: #000; /* preto */
+  padding: 50px 50px;
+}
+
 .footer-container {
   display: flex;                  /* deixa as colunas lado a lado */
   justify-content: space-between; /* espaça igualmente */
@@ -217,16 +228,15 @@ footer {
 .footer-links a {
   display: flex;             /* deixa o ícone + texto lado a lado */
   align-items: center;       /* alinha no meio vertical */
-  margin: 10px 0;
-  color:black;               
-  text-decoration: none;
+  margin: 10px 0;          
   font-family:system-ui;
   font-size: 18px;  
-  font-weight: bold;
+  font-weight:bold !important;
+  color:black;
 }
 
 .footer-links a:hover{
-  color: #d3d3d3;
+ color: #333; 
 }
 
 .footer-links img {
