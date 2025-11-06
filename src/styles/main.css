@@ -44,13 +44,14 @@ header {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* Linha de cima: logo, título e login */
 .header-container {
+  position: relative; /* importante para o título se basear nesse bloco */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
 }
+
 
 .logo {
   position: static;
@@ -59,15 +60,16 @@ header {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-
 }
 
 .titulo {
-  font-family:Helvetica Neue;
-  font-size:40px;
-  align-items: center;color: #bb260c;
+  position: absolute;   /* tira o título do fluxo normal */
+  left: 50%;            /* move até o meio horizontal */
+  transform: translateX(-50%); /* centraliza com base na largura */
+  font-family: Helvetica Neue;
+  font-size: 40px;
+  color: #bb260c;
   margin: 0;
-
 }
 
 .login-header {
@@ -127,11 +129,12 @@ nav {
   background-color: #f6f568;
   padding: 10px 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  justify-content: center;
 }
 
 .nav-container {
   display: flex;
-  justify-content: space-between; /* links centralizados, pesquisa à direita */
+  justify-content: center;
   align-items: center;
   width: 90%;
   max-width: 1200px;
@@ -160,37 +163,6 @@ nav ul li a:hover {
   background-color: var(--accent);
   color: #fff;
 }
-
-.pesquisar-form {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  gap: 5px;
-  justify-content: flex-end;
-
-}
-
-.pesquisar-input {
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.pesquisar-button {
-  padding: 6px 10px;
-  background-color: var(--accent);
-  border: none;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.pesquisar-button:hover {
-  background-color: #0066cc;
-}
-
-
 
 main {
   margin-top: 220px; 
@@ -226,16 +198,20 @@ footer {
 .map h5 {
   margin-bottom: 10px;
    color: #bb260c;
-   font-size: 20px;
+   font-size: 25px;
 }
 
-/* ===== BLOCO LINKS ===== */
-
+.footer-container {
+  display: flex;                  /* deixa as colunas lado a lado */
+  justify-content: space-between; /* espaça igualmente */
+  align-items: flex-start;        /* 🔹 alinha todos pelo topo */
+  gap: 40px;                      /* espaço entre as colunas */
+}
 
 .footer-links h5 {
   margin-bottom: 15px;
   color: #bb260c;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .footer-links a {
@@ -244,13 +220,21 @@ footer {
   margin: 10px 0;
   color:black;               
   text-decoration: none;
+  font-family:system-ui;
+  font-size: 18px;  
+  font-weight: bold;
+}
+
+.footer-links a:hover{
+  color: #d3d3d3;
 }
 
 .footer-links img {
   margin-right: 10px;        /* distância entre ícone e texto */
-  filter: brightness(0) invert(1); /* deixa ícone branco */
   transition: transform 0.2s ease;
   cursor: pointer;
+  width: 20px;               /* 🔹 tamanho da imagem */
+  height: auto;   
 }
 
 .footer-links img:hover {
@@ -264,27 +248,28 @@ footer {
 }
 /* ===== BLOCO COPYRIGHT ===== */
 .copy {
-  text-align: center;   /* centraliza */
+  text-align: right;   
 }
 
 .copy h5 {
   margin-bottom: 10px;  /* separa agradecimento do copy */
    color: #bb260c;
-   font-size: 20px;
+   font-size: 25px;
 }
 
 .copy p {
   font-weight: bold;
   color:black;
-  font-size: 14px;
-  opacity: 0.8;        /* deixa mais suave */
+  font-size: 18px;
+  opacity: 0.8;     /* deixa mais suave */
+  margin-top: 35px;
 }
 
 .copy .copy-marcas {
   margin-top: 20px;
   display: flex;
   justify-content: flex-start;
-  gap: 35px; /* espaço entre as imagens */
+  gap: 10px; /* espaço entre as imagens */
 }
 
 .copy .copy-marcas img {
