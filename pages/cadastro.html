@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cadastro de Usuário</title>
-    <link rel="stylesheet" href="../src/styles/main.css" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
     <style>
     body {
         font-family: Arial, sans-serif;
@@ -96,7 +96,7 @@
       
     <div class="logo">
       <br>      
-      <img src="../img/logo.png" height="170px" width="170px" alt="foto_logo">
+      <img src="/img/logo.png" height="170px" width="170px" alt="foto_logo">
     </div>    
 
     <div class="titulo">
@@ -119,37 +119,6 @@
       <a href="index.html">Voltar ao Login</a>
     </div>
 
-    <!-- Script principal de autenticação -->
-    <script src="../js/login.js" defer></script>
-
-    <script>
-      // Espera o script de login carregar
-      document.addEventListener("DOMContentLoaded", () => {
-        const form = document.getElementById("cadastroForm");
-        const msg = document.getElementById("mensagem");
-
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const nome = document.getElementById("nome").value.trim();
-          const usuario = document.getElementById("usuario").value.trim();
-          const senha = document.getElementById("senha").value;
-
-          try {
-            await appAuth.createUser(usuario, senha, nome);
-            msg.textContent = "Usuário cadastrado com sucesso!";
-            msg.style.color = "green";
-            form.reset();
-
-            setTimeout(() => {
-              window.location.href = "index.html";
-            }, 1200);
-          } catch (error) {
-            msg.textContent = error.message;
-            msg.style.color = "crimson";
-          }
-        });
-      });
-    </script>
     </main>
     <footer>
       <div class="footer-container">
@@ -166,10 +135,10 @@
           <h5> Contatos </h5>
           <br>
           <br>
-          <p> <img src="../img/telefone.png" width="40px" height="40px" a href="tel:+5551984673088">(51)98467-3088 Alex/Peixe</a></p>
+          <p> <img src="/img/telefone.png" width="40px" height="40px" a href="tel:+5551984673088">(51)98467-3088 Alex/Peixe</a></p>
           <p> <a href="https://wa.me/5551984673088" target="_blank"></a></p>
 
-          <p> <img src="../img/telefone.png" width="40px" height="40px" a href="tel:+5551984818993">(51)984818993 Nícolas </a></p>
+          <p> <img src="/img/telefone.png" width="40px" height="40px" a href="tel:+5551984818993">(51)984818993 Nícolas </a></p>
           <p> <a href="https://wa.me/5551984818993" target="_blank"></a></p>
         </div>
           
@@ -178,7 +147,7 @@
             <br>
                
             <div class="copy-marcas">
-              <img src="../img/logo.png"><br>
+              <img src="/img/logo.png"><br>
               <p> Bier Fisch Distribidora de Bebidas e alimentos</p>               
             </div>
 
@@ -187,6 +156,6 @@
       </div>
     </footer>
     
-    <script src="../script/login.js" defer></script>
+    <script type="module" src="/src/scripts/cadastro.js"></script>
   </body>
 </html>
