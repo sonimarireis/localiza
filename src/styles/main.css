@@ -11,10 +11,12 @@
   /* Adicionado: Garante que padding e border não aumentem a largura total */
 }
 
+/* HTML */
 html, body {
   height: 100%;
 }
 
+/*BODY*/
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -32,6 +34,8 @@ body {
 .body-container {
   argin-top: 150px; /* espaço para o header fixo */
 }
+
+/*HEADER*/
 header {
   width: 100%;
   background-color: #ebe70b;
@@ -118,6 +122,7 @@ header {
 
 } 
 
+/*NAV*/
 nav {
   width: 100%;
   background-color: #f6f568;
@@ -158,6 +163,7 @@ nav ul li a:hover {
   color: #fff;
 }
 
+/*MAIN*/
 main {
   margin-top: 40px; /* distância entre nav e conteúdo */
   padding: 20px;
@@ -175,54 +181,77 @@ main h2 {
   font-size: 32px;
   color: #bb260c;
   font-weight: bold;
-  margin-bottom: 20px; /* espaço abaixo para o texto seguinte */ 
+  margin-bottom: 20px;
   margin-top: 30px; 
-
 }
 
+.main-container {
+  display: grid;                      
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px;                          
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;                     
+}
+
+.main-container .item {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.main-container .item:hover {
+  transform: scale(1.05);
+}
+
+.main-container img {
+  width: 100%;             
+  height: auto;
+  border-radius: 8px;
+}
+
+.main-container p {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #bb260c;
+}
+
+.item .preco {
+  font-size: 60px !important;
+  font-weight: bold !important;
+  color: #bb260c !important;
+  margin-top: 5px !important;
+}
+
+/*FOOTER*/
 footer {
-  background:  #ebe70b; 
-  color: var(--fg);          
-  padding: 50px 50px;
-  font-size: 32px;
-}
+  background: #ebe70b;
+  color: #000; /* preto */
+  padding: 20px 40px;
+  font-size: 18px;
+}  
 
 .footer-container {
-  display: grid;              
-  justify-content: space-between; /* distribui igualmente */
-  align-items: flex-start;    /* todos alinhados no topo */
-  gap: 30px;                  /* espaço entre blocos */
+  display: flex;              
+  justify-content: space-between; 
+  align-items: flex-start;    
+  gap: 20px;                  
   grid-template-columns: 1fr 1fr 1fr;
   justify-content:space-between;
   align-items: center;
   overflow-y: auto; 
+  margin-top: 30px;
 }
 
-
-/* ===== BLOCO MAP ===== */
-.map h5 {
-  margin-bottom: 10px;
-   color: #bb260c;
-   font-size: 25px;
-}
-
-footer {
-  background: #ebe70b;
-  color: #000; /* preto */
-  padding: 50px 50px;
-}
-
-.footer-container {
-  display: flex;                  /* deixa as colunas lado a lado */
-  justify-content: space-between; /* espaça igualmente */
-  align-items: flex-start;        /* 🔹 alinha todos pelo topo */
-  gap: 40px;                      /* espaço entre as colunas */
-}
-
-.footer-links h5 {
-  margin-bottom: 15px;
-  color: #bb260c;
-  font-size: 25px;
+.footer-links h5,
+.map h5,
+.copy h5 {
+  margin-bottom: 5px;
+  font-size: 20px;
+  margin-top: 5px;
 }
 
 .footer-links a {
@@ -261,18 +290,9 @@ footer {
   text-align: right;   
 }
 
-.copy h5 {
-  margin-bottom: 10px;  /* separa agradecimento do copy */
-   color: #bb260c;
-   font-size: 25px;
-}
-
 .copy p {
-  font-weight: bold;
-  color:black;
-  font-size: 18px;
-  opacity: 0.8;     /* deixa mais suave */
-  margin-top: 35px;
+  margin-top: 10px;  /* era 35px */
+  font-size: 16px;
 }
 
 .copy .copy-marcas {

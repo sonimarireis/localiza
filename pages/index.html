@@ -35,16 +35,58 @@
           <li><a href="#">⚙️ Sair </a></li>
         </ul>
 
-        <form class="login-header" method="post" name="login">
-          <input type="text0" class="campo" placeholder="Usuário" name="usuario">
-          <input type="password" class="campo" placeholder="Senha" name="senha">
+        <form class="login-header" method="post" name="login" id="loginForm">
+          <input type="text" class="campo" placeholder="Usuário" name="usuario" id="usuario">
+          <input type="password" class="campo" placeholder="Senha" name="senha" id="senha">
           <button type="submit" class="btn-entrar">Entrar</button>          
         </form>
+        
+        <p id="mensagem"></p>
+        
       </div>
     </nav>    
   
       <main>      
-        <h2> Ofertas da Semana BIER FISCH! </h2>
+        <h2> Ofertas BIER FISCH! </h2>
+
+        <div class="main-container">
+          <div class="item">
+            <img src="../img/pepsi_2l.jpg" alt="Pepsi 2L">
+            <p>Pepsi 2L</p>
+            <p class="preco">R$7,39</p>
+          </div>
+        
+          <div class="item">
+            <img src="../img/polar_473ml.jpg" alt=" Cerveja Polar 473ml">
+            <p>Cerveja Polar 473ml</p>
+            <p class="preco">4,39</p>
+          </div>
+        
+          <div class="item">
+            <img src="../img/oleo.jpg" alt="Óleo de Soja Vitaliv 900ml">
+            <p>Óleo de soja Vitaliv 900ml</p>
+            <p class="preco">R$8,49</p>
+          </div>
+        
+          <div class="item">
+            <img src="../img/krokant's_70g.jpg" alt="Batata Palha Krokant's 70gr">
+            <p>Batata palha Krokant's 70gr</p>
+            <p class="preco">R$2,49</p>
+          </div>
+        
+          <div class="item">
+            <img src="../img/monster_473ml.jpg" alt="Energético Monster 473ml">
+            <p>Energético Monster 473ml</p>
+            <p class="preco">R$7,99</p>
+          </div>
+        
+          <div class="item">
+            <img src="../img/original_473ml.jpg" alt="Cerveja Original 473ml">
+            <p>Cerveja Original latão 473ml</p>
+            <p class="preco">R$5,29</p>
+          </div>
+        </div>
+        
       </main>
 
       <footer>
@@ -71,9 +113,11 @@
             
             <div class="copy">
               <h5>Obrigado por ter visitado o nosso site ♡</h5>
+              <br>
                  
               <div class="copy-marcas">
-                <img src="../img/logo.png"><p> Bier Fisch Distribidora de Bebidas e alimentos</p>               
+                <img src="../img/logo.png"><br>
+                <p> Bier Fisch Distribidora de Bebidas e alimentos</p>               
               </div>
 
               <p>Copyright ©2025 | Todos os direitos reservados Sonimári Reis </p>
