@@ -1,28 +1,35 @@
-const path = require('path');
 const express = require('express');
+const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = process.env.PORT || 3001; // API na 3001; Vite na 3000
+const PORT = process.env.PORT || 3001;
 
-// Body parser
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Auto-carregamento de rotas da pasta server/routes
-const routesDir = path.resolve(__dirname, 'routes');
+const routesDir = path.join(__dirname, 'routes');
 if (fs.existsSync(routesDir)) {
   fs.readdirSync(routesDir)
     .filter((file) => file.endsWith('.js'))
     .forEach((file) => {
-      const registerRoutes = require(path.join(routesDir, file));
-      if (typeof registerRoutes === 'function') {
-        registerRoutes(app);
+      const register = require(path.join(routesDir, file));
+      if (typeof register === 'function') {
+        register(app);
       }
     });
 }
 
-app.listen(PORT, () => {
-  console.log(`API rodando em http://localhost:${PORT}`);
+app.get('/api/health', (_req, res) => {
+  res.json({ status: 'ok' });
 });
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`API ouvindo na porta ${PORT}`);
+  });
+}
+
+module.exports = app;
 
 

@@ -1,11 +1,16 @@
 {
-  "name": "fullstack-pack",
+  "name": "Localiza-Bier-Fisch",
   "version": "1.0.0",
   "private": true,
-  "description": "Starter fullstack simples com Vite + Express (dev local)",
+  "description": "Site da Localiza-Bier-Fisch, distribuidora de bebidas e alimentos",
   "main": "server/server.js",
   "scripts": {
-    "dev": "concurrently -k -n api,web -c cyan,magenta \"cross-env PORT=3001 nodemon server/server.js\" \"vite --open\""
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"cross-env PORT=3001 nodemon server/server.js\" \"vite --open /pages/index.html\"",
+    "dev:api": "cross-env PORT=3001 nodemon server/server.js",
+    "dev:web": "vite --open /pages/index.html",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server/server.js"
   },
   "dependencies": {
     "express": "^4.19.2"

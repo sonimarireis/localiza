@@ -31,10 +31,6 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
-.body-container {
-  argin-top: 150px; /* espaço para o header fixo */
-}
-
 /*HEADER*/
 header {
   width: 100%;
