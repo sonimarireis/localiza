@@ -54,66 +54,27 @@
     font-size: 40px;
     color: #bb260c;
     margin: 0;
+    font-weight:600;  
   }
-  
-  .app-header { 
+
+  .date {
     padding: 16px; 
     border-bottom:1px solid var(--border); 
-  }
-  
-  .branding { 
     display:flex; 
     justify-content:space-between; 
     align-items:end; 
     gap:12px; 
     flex-wrap:wrap; 
-  }
-  
-  .branding h1 { 
-    font-size: clamp(20px, 4vw, 28px);
-    margin:0; 
-    font-weight:600; 
-  }
-  
-  .branding .date { 
     color:var(--muted); 
-    font-size:14px; 
-  }
-  
-  .tabs { 
-    display:flex; 
-    gap:8px; 
-    margin-top:12px; 
-  }
-  
-  .tab { 
-    border:1px solid var(--border); 
-    background:#fafafa; 
-    padding:8px 12px; 
-    border-radius:999px; 
-    cursor:pointer; 
-  }
-  
-  .tab.active { 
-    background:#111; 
-    color:#fff; 
-    border-color:#111; 
-  }
+    font-size:14px;  
+  }  
   
   main { 
     padding:16px; 
     max-width:1200px; 
     margin:0 auto; 
-  }
-  
-  .tab-panel { 
-    display:none; 
-  }
-  
-  .tab-panel.active { 
-    display:block; 
-  }
-  
+  } 
+   
   .card { 
     border:1px solid var(--border); 
     border-radius:var(--radius); 
@@ -353,3 +314,84 @@
   #reportList td:last-child {
     font-weight:700;
   }
+
+  /*FOOTER*/
+footer {
+  background: #ebe70b;
+  color: #000; /* preto */
+  padding: 20px 40px;
+  font-size: 18px;
+}  
+
+.footer-container {
+  display: flex;              
+  justify-content: space-between; 
+  align-items: flex-start;    
+  gap: 20px;                  
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content:space-between;
+  align-items: center;
+  overflow-y: auto; 
+  margin-top: 30px;
+}
+
+.footer-links h5,
+.map h5,
+.copy h5 {
+  margin-bottom: 5px;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.footer-links a {
+  display: flex;             /* deixa o ícone + texto lado a lado */
+  align-items: center;       /* alinha no meio vertical */
+  margin: 10px 0;          
+  font-family:system-ui;
+  font-size: 18px;  
+  font-weight:bold !important;
+  color:black;
+}
+
+.footer-links a:hover{
+ color: #333; 
+}
+
+.footer-links img {
+  margin-right: 10px;        /* distância entre ícone e texto */
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  width: 20px;               /* 🔹 tamanho da imagem */
+  height: auto;   
+}
+
+.footer-links img:hover {
+  transform: scale(1.1);
+  /* filtro aproximado para #3ac9d3 */
+  filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1941%) hue-rotate(150deg) brightness(92%) contrast(94%);
+}
+
+.footer-links a:hover{
+  color: #d3d3d3;
+}
+/* ===== BLOCO COPYRIGHT ===== */
+.copy {
+  text-align: right;   
+}
+
+.copy p {
+  margin-top: 10px;  /* era 35px */
+  font-size: 16px;
+}
+
+.copy .copy-marcas {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px; /* espaço entre as imagens */
+}
+
+.copy .copy-marcas img {
+  width: 110px;
+  height: auto;
+}

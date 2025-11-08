@@ -3,50 +3,212 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Produtos</title>
-    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="/src/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="/public/img/logo.png" type="image/x-icon">
+    <title> Localiza </title>
   </head>
+
   <body>
     <header>
-      <div class="header-container">
-        <div class="logo">
-          <br />
-          <img src="/img/logo.png" height="170px" width="170px" alt="foto_logo" />
-        </div>
-        <div class="titulo">
-          <h1>Localiza</h1>
-        </div>
-      </div>
+      <div class="header-container">        
+       <div class="logo">
+        <br>      
+        <img src="/public/img/logo.png" height="170px" width="170px" alt="foto_logo">
+       </div>    
+
+       <div class="titulo">
+        <h1> Localiza </h1>
+        <div class="date" id="today"></div>
+
+       </div>    
+      </div>     
     </header>
-    <nav>
-      <div class="nav-container">
-        <ul>
-          <li><a href="index.html">🏠 Home</a></li>
-          <li><a href="clientes.html">📦 Clientes</a></li>
-          <li><a href="produtos.html">👥 Produtos</a></li>
-          <li><a href="vendas.html">💰 Vendas</a></li>
-          <p><a href="cadastro.html">Cadastrar novo usuário</a></p>
-        </ul>
-      </div>
-    </nav>
-    <main>
-      <div class="main-container">
-        <h2>Produtos</h2>
-        <p>Cadastre e consulte os produtos da distribuidora.</p>
-      </div>
+
+    <main>      
+      <section id="produtos" class="tab-panel active" role="tabpanel">
+        <form id="product-form" class="card">
+          <h2>Novo Produto</h2>
+          <div class="grid">
+            <label>
+              Nome
+              <input type="text" id="pName" required placeholder="Ex.: Água Mineral 500ml">
+            </label>
+            <label>
+              Estoque Padrão (máximo ideal)
+              <input type="number" id="pMax" required min="0" step="1" placeholder="Ex.: 120">
+            </label>
+            <label>
+              Categoria
+              <select id="pCategory" required>
+                <option value="" disabled selected>Selecione</option>
+                <option>Água Mineral</option>
+                <option>Cachaça</option>
+                <option>Cerveja</option>
+                <option>Energético</option>
+                <option>Refrigerante</option>
+                <option>Suco</option>
+                <option>Vodka</option>
+                <option>Whisky</option>
+                <option>Vinho</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button type="submit" class="primary">Cadastrar</button>
+            <button type="reset" class="ghost">Limpar</button>
+          </div>
+        </form>
+  
+        <div class="card">
+          <div class="card-header">
+            <h2>Lista de Produtos</h2>
+            <div class="row">
+              <input type="search" id="searchProducts" placeholder="Buscar por nome">
+              <select id="filterCategory" aria-label="Filtrar por categoria">
+                <option value="">Todas as categorias</option>
+                <option>Água Mineral</option>
+                <option>Cachaça</option>
+                <option>Cerveja</option>
+                <option>Energético</option>
+                <option>Refrigerante</option>
+                <option>Suco</option>
+                <option>Vodka</option>
+                <option>Whisky</option>
+                <option>Vinho</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th><span class="full">Estoque Padrão</span><span class="abbr">Est.</span></th>
+                  <th><span class="full">Última Contagem</span><span class="abbr">C.E.</span></th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="productsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Conferência -->
+      <section id="conferencia" class="tab-panel" role="tabpanel" aria-hidden="true">
+        <div class="card">
+          <div class="card-header">
+            <h2>Conferência de Estoque</h2>
+            <div class="row">
+              <input type="search" id="searchCount" placeholder="Buscar produto">
+              <input type="text" id="orderOwner" placeholder="Nome do colaborador">
+              <button id="saveAllCounts" class="primary">Salvar Contagens</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Padrão</th>
+                  <th>Real</th>
+                  <th>Pedido</th>
+                </tr>
+              </thead>
+              <tbody id="countTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Relatório -->
+      <section id="relatorio" class="tab-panel" role="tabpanel" aria-hidden="true">
+        <div class="card">
+          <div class="card-header">
+            <h2>Relatório de Pedidos</h2>
+            <div class="row">
+              <button id="refreshReport" class="ghost">Atualizar</button>
+              <button id="printReport" class="primary">Imprimir (80mm)</button>
+              <button id="copyReport" class="ghost">Copiar Texto</button>
+              <a id="waShare" class="ghost" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+            </div>
+          </div>
+          <div id="reportOwnerLine" class="muted"></div>
+          <div id="reportEmpty" class="muted">Sem itens para repor. Faça uma conferência ou ajuste os produtos.</div>
+          <div id="reportList" class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Real</th>
+                  <th>A comprar</th>
+                </tr>
+              </thead>
+              <tbody id="reportTable"></tbody>
+            </table>
+          </div>
+        </div>
+  
+        <!-- Área de recibo para impressão 80mm -->
+        <section id="receipt" aria-hidden="true">
+          <div class="receipt">
+            <div class="receipt-header">
+              <div class="store-name" id="receiptStore">Distribuidora</div>
+              <div class="receipt-date" id="receiptDate"></div>
+              <div class="receipt-owner" id="receiptOwner"></div>
+              <div class="divider"></div>
+            </div>
+            <div class="receipt-body" id="receiptBody"></div>
+            <div class="divider"></div>
+            <div class="receipt-footer" id="receiptFooter">Gerado automaticamente</div>
+          </div>
+        </section>
+      </section>
     </main>
+
     <footer>
       <div class="footer-container">
-        <div class="copy">
-          <h5>Obrigado por ter visitado o nosso site ♡</h5>
-          <div class="copy-marcas">
-            <img src="/img/logo.png" alt="Logo Localiza" /><br />
-            <p>Bier Fisch Distribuidora de Bebidas e Alimentos</p>
-          </div>
-          <p>Copyright ©2025 | Todos os direitos reservados Sonimári Reis</p>
+  
+        <!-- BLOCO 1 - MAPS -->
+        <div class="map">
+          <h5> Localização </h5>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.284635748633!2d-51.2058141!3d-30.1309866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9519836b21478e13%3A0xa1adbf6ffa171c21!2sRua%20Oz%C3%B3rio%20Jos%C3%A9%20Martins%2C%20191%20-%20Campo%20Novo%2C%20Porto%20Alegre%20-%20RS%2C%2091750-032!5e0!3m2!1spt-BR!2sbr!4v1730903837998!5m2!1spt-BR!2sbr"
+            width="200px"  height="200px"  style="border:0;"  allowfullscreen=""  loading="lazy"  referrerpolicy="no-referrer-when-downgrade"></iframe>
+
         </div>
+
+        <div class="footer-links">
+          <h5> Contatos </h5>
+          <br>
+          <br>
+          <p> <img src="/public/img/telefone.png" width="40px" height="40px" a href="tel:+5551984673088">(51)98467-3088 Alex/Peixe</a></p>
+          <p> <a href="https://wa.me/5551984673088" target="_blank"></a></p>
+
+          <p> <img src="/public/img/telefone.png" width="40px" height="40px" a href="tel:+5551984818993">(51)984818993 Nícolas </a></p>
+          <p> <a href="https://wa.me/5551984818993" target="_blank"></a></p>
+        </div>
+          
+          <div class="copy">
+            <h5>Obrigado por ter visitado o nosso site ♡</h5>
+            <br>
+               
+            <div class="copy-marcas">
+              <img src="/public/img/logo.png"><br>
+              <p> Bier Fisch Distribidora de Bebidas e alimentos</p>               
+            </div>
+
+            <p>Copyright ©2025 | Todos os direitos reservados Sonimári Reis </p>
+          </div>
       </div>
     </footer>
-    <script type="module" src="/src/scripts/protected.js"></script>
-  </body>
+    
+    <script type="module" src="/src/scripts/index.js"></script>  
+  
+ </body>
 </html>
+
+    
+
+
