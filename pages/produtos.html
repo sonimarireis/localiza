@@ -26,32 +26,65 @@
       </div>     
     </header>
 
-    <main>      
+    <main>
+      
       <section id="produtos" class="tab-panel active" role="tabpanel">
-        <form id="product-form" class="card">
-          <h2>Novo Produto</h2>
-          <div class="grid">
-            <label>
-              Nome
-              <input type="text" id="pName" required placeholder="Ex.: Água Mineral 500ml">
-            </label>
-            <label>
-              Estoque Padrão (máximo ideal)
-              <input type="number" id="pMax" required min="0" step="1" placeholder="Ex.: 120">
-            </label>
-            <label>
-              Categoria
+       <form id="product-form" class="card">
+        <h2>Novo Produto</h2>
+    
+        <div class="grid">
+          <label>
+            Nome
+            <input type="text" id="pName" required placeholder="Ex.: Água Mineral 500ml">
+          </label>
+    
+          <label>
+            Estoque 
+            <input type="number" id="pMax" required min="0" step="1" placeholder="Ex.: 120">
+          </label>    
+        </div>
+
+        <div class="grid">
+          <label>
+            Data
+            <input type="date" id="pDate" required>
+          </label>
+    
+          <label>
+            Código
+            <input type="text" id="pCode" required placeholder="Ex.: 1234-A">
+          </label>
+    
+          <label>
+            Validade
+            <input type="date" id="pExpiry">
+          </label>
+        </div>
+    
+        <div class="actions">
+          <button type="submit" class="primary">Salvar</button>
+          <button type="reset" class="ghost">Limpar</button>
+        </div>
+       </form>
+     </section>
+      
+         <label>
+           Categoria
               <select id="pCategory" required>
                 <option value="" disabled selected>Selecione</option>
                 <option>Água Mineral</option>
+                <option>Alimentos</option>
                 <option>Cachaça</option>
                 <option>Cerveja</option>
+                <option>Chocolate</option>
                 <option>Energético</option>
                 <option>Refrigerante</option>
+                <option>Salgadinhos</option>
                 <option>Suco</option>
                 <option>Vodka</option>
                 <option>Whisky</option>
-                <option>Vinho</option>
+                <option>Vinho</option>                
+
               </select>
             </label>
           </div>
@@ -183,11 +216,17 @@
           <h5> Contatos </h5>
           <br>
           <br>
-          <p> <img src="/public/img/telefone.png" width="40px" height="40px" a href="tel:+5551984673088">(51)98467-3088 Alex/Peixe</a></p>
-          <p> <a href="https://wa.me/5551984673088" target="_blank"></a></p>
+          <p>
+            <a href="https://wa.me/5551984673088" target="_blank">
+              <img src="/public/img/telefone.png" width="40" height="40" alt="WhatsApp"> (51) 98467-3088 Alex/Peixe
+            </a>
+          </p>
 
-          <p> <img src="/public/img/telefone.png" width="40px" height="40px" a href="tel:+5551984818993">(51)984818993 Nícolas </a></p>
-          <p> <a href="https://wa.me/5551984818993" target="_blank"></a></p>
+          <p>
+            <a href="https://wa.me/5551984818993" target="_blank">
+              <img src="/public/img/telefone.png" width="40" height="40" alt="WhatsApp"> (51) 98481-8993 Nícolas
+            </a>
+          </p>        
         </div>
           
           <div class="copy">
