@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <script>
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+      if (!usuarioLogado) {
+        alert("Você precisa estar logado para acessar esta página!");
+        window.location.href = "index.html";
+      }
+    </script>
+    
     <header>
       <div class="header-container">        
        <div class="logo">
@@ -29,176 +37,107 @@
     <main>
       
       <section id="produtos" class="tab-panel active" role="tabpanel">
-       <form id="product-form" class="card">
-        <h2>Novo Produto</h2>
+        <form id="product-form" class="card">
+         <h2>Novo Produto</h2>
     
-        <div class="grid">
-          <label>
-            Nome
-            <input type="text" id="pName" required placeholder="Ex.: Água Mineral 500ml">
-          </label>
-    
-          <label>
-            Estoque 
-            <input type="number" id="pMax" required min="0" step="1" placeholder="Ex.: 120">
-          </label>    
-        </div>
-
-        <div class="grid">
-          <label>
-            Data
+         <div class="grid">
+           <label>
+             Data
             <input type="date" id="pDate" required>
-          </label>
-    
-          <label>
+           </label>
+          
+           <label>
             Código
             <input type="text" id="pCode" required placeholder="Ex.: 1234-A">
-          </label>
-    
-          <label>
-            Validade
-            <input type="date" id="pExpiry">
-          </label>
-        </div>
-    
-        <div class="actions">
-          <button type="submit" class="primary">Salvar</button>
-          <button type="reset" class="ghost">Limpar</button>
-        </div>
-       </form>
-     </section>
-      
-         <label>
-           Categoria
-              <select id="pCategory" required>
-                <option value="" disabled selected>Selecione</option>
-                <option>Água Mineral</option>
-                <option>Alimentos</option>
-                <option>Cachaça</option>
-                <option>Cerveja</option>
-                <option>Chocolate</option>
-                <option>Energético</option>
-                <option>Refrigerante</option>
-                <option>Salgadinhos</option>
-                <option>Suco</option>
-                <option>Vodka</option>
-                <option>Whisky</option>
-                <option>Vinho</option>                
+           </label>
 
-              </select>
-            </label>
+           <label>
+            Nome
+            <input type="text" id="pName" required placeholder="Ex.: Água Mineral 500ml">
+           </label>
+         </div>
+    
+         <div class="grid">
+            <label>
+              Estoque 
+              <input type="number" id="pMax" required min="0" step="1" placeholder="Ex.: 120">
+            </label>    
+
+            <label>
+              Validade
+              <input type="date" id="pExpiry">
+            </label>          
+            <div class="actions">
+              <button type="submit" class="primary">Salvar</button>
+              <button type="reset" class="ghost">Limpar</button>
+            </div>                      
+           
+            <label>
+            Categoria
+             <select id="pCategory" required>
+             <option value=" disabled selected">Selecione</option>
+             <option>Água Mineral</option>
+             <option>Alimentos</option>
+             <option>Cachaça</option>
+             <option>Cerveja</option>
+             <option>Chocolate</option>
+             <option>Energético</option>
+             <option>Refrigerante</option>
+             <option>Salgadinhos</option>
+             <option>Suco</option>
+             <option>Vodka</option>
+             <option>Whisky</option>
+             <option>Vinho</option>
+            </select>
+
+             <div class="actions">
+              <button type="submit" class="primary">Cadastrar</button>
+              <button type="reset" class="ghost">Limpar</button>
+            </div>  
+           </label>
           </div>
-          <div class="actions">
-            <button type="submit" class="primary">Cadastrar</button>
-            <button type="reset" class="ghost">Limpar</button>
-          </div>
-        </form>
-  
+         <br>              
+           <br>
+          </div>         
+       </form>
+       
         <div class="card">
-          <div class="card-header">
+          <div class="card-header row">
             <h2>Lista de Produtos</h2>
-            <div class="row">
-              <input type="search" id="searchProducts" placeholder="Buscar por nome">
-              <select id="filterCategory" aria-label="Filtrar por categoria">
-                <option value="">Todas as categorias</option>
-                <option>Água Mineral</option>
-                <option>Cachaça</option>
-                <option>Cerveja</option>
-                <option>Energético</option>
-                <option>Refrigerante</option>
-                <option>Suco</option>
-                <option>Vodka</option>
-                <option>Whisky</option>
-                <option>Vinho</option>
-              </select>
-            </div>
+            <input type="search" id="searchProducts" placeholder="Buscar por nome">
+            <select id="filterCategory" aria-label="Filtrar por categoria">
+              <option value="">Todas as categorias</option>
+              <option>Água Mineral</option>
+              <option>Cachaça</option>
+              <option>Cerveja</option>
+              <option>Energético</option>
+              <option>Refrigerante</option>
+              <option>Suco</option>
+              <option>Vodka</option>
+              <option>Whisky</option>
+              <option>Vinho</option>
+            </select>
+          </div>          
+         </div>
+
+         <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th><span class="full">Estoque </span>
+                  <span class="abbr">Est.</span></th>
+                <th><span class="full">Última Contagem</span>
+                  <span class="abbr">C.E.</span></th>
+                <th>Valor R$</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="productsTable"></tbody>
+           </table>
           </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th><span class="full">Estoque Padrão</span><span class="abbr">Est.</span></th>
-                  <th><span class="full">Última Contagem</span><span class="abbr">C.E.</span></th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody id="productsTable"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-  
-      <!-- Conferência -->
-      <section id="conferencia" class="tab-panel" role="tabpanel" aria-hidden="true">
-        <div class="card">
-          <div class="card-header">
-            <h2>Conferência de Estoque</h2>
-            <div class="row">
-              <input type="search" id="searchCount" placeholder="Buscar produto">
-              <input type="text" id="orderOwner" placeholder="Nome do colaborador">
-              <button id="saveAllCounts" class="primary">Salvar Contagens</button>
-            </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Produto</th>
-                  <th>Padrão</th>
-                  <th>Real</th>
-                  <th>Pedido</th>
-                </tr>
-              </thead>
-              <tbody id="countTable"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-  
-      <!-- Relatório -->
-      <section id="relatorio" class="tab-panel" role="tabpanel" aria-hidden="true">
-        <div class="card">
-          <div class="card-header">
-            <h2>Relatório de Pedidos</h2>
-            <div class="row">
-              <button id="refreshReport" class="ghost">Atualizar</button>
-              <button id="printReport" class="primary">Imprimir (80mm)</button>
-              <button id="copyReport" class="ghost">Copiar Texto</button>
-              <a id="waShare" class="ghost" target="_blank" rel="noopener">Enviar por WhatsApp</a>
-            </div>
-          </div>
-          <div id="reportOwnerLine" class="muted"></div>
-          <div id="reportEmpty" class="muted">Sem itens para repor. Faça uma conferência ou ajuste os produtos.</div>
-          <div id="reportList" class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Produto</th>
-                  <th>Real</th>
-                  <th>A comprar</th>
-                </tr>
-              </thead>
-              <tbody id="reportTable"></tbody>
-            </table>
-          </div>
-        </div>
-  
-        <!-- Área de recibo para impressão 80mm -->
-        <section id="receipt" aria-hidden="true">
-          <div class="receipt">
-            <div class="receipt-header">
-              <div class="store-name" id="receiptStore">Distribuidora</div>
-              <div class="receipt-date" id="receiptDate"></div>
-              <div class="receipt-owner" id="receiptOwner"></div>
-              <div class="divider"></div>
-            </div>
-            <div class="receipt-body" id="receiptBody"></div>
-            <div class="divider"></div>
-            <div class="receipt-footer" id="receiptFooter">Gerado automaticamente</div>
-          </div>
-        </section>
-      </section>
+         </section>      
     </main>
 
     <footer>

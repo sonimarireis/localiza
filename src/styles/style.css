@@ -75,85 +75,49 @@
     margin:0 auto; 
   } 
    
-  .card { 
-    border:1px solid var(--border); 
-    border-radius:var(--radius); 
-    padding:16px; 
-    margin-bottom:16px; 
-    background:#fff; 
-  }  
-    
-  .table-wrap { 
-    overflow:auto; 
-    border:1px solid var(--border); 
-    border-radius:8px; 
+  .card {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-sizing: border-box;
   }
   
-  table { 
-    width:100%; 
-    border-collapse:collapse; 
-    font-size: clamp(12px, 1.2vw, 16px);
+  .table-wrap {
+    width: 100%;
+    margin-top: 12px;
   }
   
-  th, td { 
-    padding:10px 12px; 
-    border-bottom:1px solid var(--border); 
-    text-align:left; 
-    overflow-wrap: anywhere;
+  .table-wrap table {
+    width: 100%;
+    border-collapse: collapse;
   }
   
-  /* Abreviações de cabeçalho (mobile) */
+  .table-wrap th,
+  .table-wrap td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+  }
+  
+  /* Esconde abreviações em telas grandes */
   th .abbr { display: none; }
   th .full { display: inline; }
-  
+
+/* Mostra abreviações apenas em telas pequenas */
   @media (max-width: 600px){
-    th .full { display: none; }
-    th .abbr { display: inline; }
-  }
-  
-  thead th { 
-    background:#fafafa; 
-    position:sticky; 
-    top:0; 
-    z-index:1; 
-  }
-  
-    .grid { 
-    display:grid; 
-    gap:12px; 
-    grid-template-columns: repeat(3, 1fr); 
-  }
-  
+  th .full { display: none; }
+  th .abbr { display: inline; }
+  } 
+
   @media (max-width: 800px){
     .grid{
       grid-template-columns:1fr; 
     }
   }
-  
-  label { 
-    display:flex; 
-    flex-direction:column; 
-    gap:6px; 
-    font-size:14px; 
-  }
-  
-  input[type="text"], input[type="number"], input[type="search"] { 
-    border:1px solid var(--border); 
-    border-radius:8px; 
-    padding:10px 12px; 
-    font-size:14px; 
-    width:100%; 
-  }
-  
-  input[type="number"] { 
-    -moz-appearance:textfield; 
-  }
-  
-  input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
-    -webkit-appearance:none; 
-    margin:0;
-  }
-  
+
+  /*Resposividade em telas pequena e horizontais*/
   @media (max-width: 600px){
     th, td { padding:8px; }
     .qty-input { width:100%; }
@@ -177,14 +141,99 @@
     body { font-size: clamp(12px, 1.6vh, 14px); }
     .app-header, main { padding:8px; }
   }
+
+  /* cabeçalho dentro do Thead*/
+  thead th { 
+    background:#fafafa; 
+    position:sticky; 
+    top:0; 
+    z-index:1; 
+  }
   
+  /* Transforma a <div> em um container grade*/
+  .grid { 
+    display:grid; 
+    gap:12px; 
+    grid-template-columns: repeat(3, 1fr); 
+   } 
+   
+   /*Cada nome do campo fica bem alinhado acima do input*/ 
+   /*Um <label> serve para rotular (ou dar nome) a um campo de formulário — como um input de texto, número, data etc.*/
+  label { 
+    display:flex; 
+    flex-direction:column; 
+    gap:6px; 
+    font-size:14px; 
+  }
+  
+  /*Esse trecho estiliza os campos de texto, número e busca*/
+  input[type="text"], input[type="number"], input[type="search"], input[type="date"],input[type="search"], select {
+    border:1px solid var(--border); 
+    border-radius:8px; 
+    padding:10px 12px; 
+    font-size:14px; 
+    width:100%; 
+  }
+  
+  /* Retira as setinhas de numeração (+ ou -), afetando somente o Firefox (que usa o motor Gecko, da Mozilla)*/
+
+  input[type="number"] { 
+    -moz-appearance:textfield; 
+  }
+  
+ /* Retira as setinhas de numeração (+ ou -), afetando Chrome, Edge, Safari e Opera, que usam o motor WebKit (ou Blink, que deriva dele)*/
+  input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+    -webkit-appearance:none; 
+    margin:0;
+  }  
+  
+  /* Agrupar botões de ação, agrupar conteúdo em linha (campos, textos, colunas)*/
   .actions, .row { 
     display:flex; 
     gap:8px; 
     align-items:center; 
-    flex-wrap:wrap; 
+    flex-wrap:wrap;
   }
+
+  .card {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  /* Cabeçalho da lista de produtos (título + busca + filtro) */
+.card-header.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* distribui os 3 elementos */
+  gap: 12px;
+  flex-wrap: wrap; /* se a tela for pequena, quebra para a linha de baixo */
+}
+
+/* Faz input e select ficarem com tamanho proporcional */
+.card-header.row input,
+.card-header.row select {
+  flex: 1;           /* ocupam o mesmo espaço restante */
+  min-width: 200px;  /* evita que fiquem muito pequenos */
+}
+
+/* Mantém o título fixo à esquerda */
+.card-header.row h2 {
+  flex: 0; /* não cresce nem encolhe */
+  white-space: nowrap; /* impede quebra de linha no título */
+  margin: 0;
+}
   
+  /*Organiza elementos lado a lado na mesm alinha*/
+  .row input,
+  .row select {
+  flex: 1;          
+  min-width: 150px; 
+}
+
+  /*Define o estilo base para todos os botões e links com aparência de botão*/
   button, .ghost, .primary, a.ghost { 
     border:none; 
     background:#f2f2f2; 
@@ -198,40 +247,44 @@
     justify-content:center; 
   }
   
+  /*Serve para destacar o botão principal de uma ação (por exemplo, “Salvar” ou “Enviar”)*/
   button.primary, .primary { 
     background:#111; 
     color:#fff; 
   }
   
+  /*Cria um botão secundário, de aparência leve (“ghost” = “fantasma”), geralmente usado para ações menos importantes, como “Cancelar” ou “Limpar”*/
   button.ghost, .ghost { 
     background:#f7f7f7; 
   }
   
-  button.small, .small { 
-    padding:6px 10px; 
-    font-size:12px; 
-  }
-  
+  /*Define um texto discreto (“muted” = apagado, atenuado).
+  Normalmente é usado para informações secundárias, mensagens vazias ou observações.
+  Ex. erro ou produto não encontrado.*/  
   .muted { 
     color:var(--muted); 
     padding:16px; 
   }  
- 
+
+/*( SEM USO)Define uma largura fixa para campos de entrada de quantidade (“qty” = quantity)*/
   .qty-input { 
     width:100px; 
   }
   
-    /* Inline editing */
+  /*(SEM USO)ria um layout horizontal para botões de ação dentro de uma linha de tabela.
+  É usado, por exemplo, quando você tem uma tabela de produtos com botões “Editar” e “Excluir”.*/
   .row-actions { 
     display:flex; 
     gap:6px; 
   }
   
-  /* Receipt preview (screen hidden) */
+/* ( SEM USO)Esconde completamente um elemento com id="receipt" (geralmente um comprovante ou resumo de compra).
+Ele ficaria oculto na tela, até que o JavaScript o mostre (por exemplo, ao finalizar uma compra ou gerar PDF).*/
   #receipt { 
     display:none; 
   }
   
+  /*serve pra definir o visual quando for exibido. TIPO RECIBO*/
   .receipt { 
     width: 280px; 
     /* ~80mm at 96dpi */ 
@@ -240,6 +293,7 @@
     color:#000; 
   }
   
+  /*Título do recibo*/
   .receipt .store-name { 
     text-align:center; 
     font-weight:700; 
@@ -247,33 +301,42 @@
     text-decoration: underline;
   }
   
+  /*Data do recibo*/
   .receipt .receipt-date { 
     text-align:center; 
     margin-bottom:6px; 
     font-weight:700;
   }
   
+  /*Linha tracejada de divisão do recibo*/
   .receipt .divider { 
     border-top:1px dashed #000; 
-    margin:6px 0; 
+    margin:6px 0;
   }
   
+  /*Coloca os elementos de uma linha (por exemplo, nome do produto e preço) um de cada lado.*/
   .receipt .line { 
     display:flex; 
     justify-content:space-between; 
     gap:8px; 
   }
   
+    /*Aplica negrito a nomes de categorias dentro do recibo.
+(Ex: “Bebidas”, “Lanches”, “Taxas” etc.)*/
+.receipt .category { 
+  font-weight:700; 
+}
+
+  /*Destaca o total final do recibo.*/
   .receipt .total { 
     margin-top:6px; 
     font-weight:700; 
     text-align:right; 
-  }
+  } 
   
-  .receipt .category { 
-    font-weight:700; 
-  }
-  
+  /*Esse não faz parte do recibo, mas do relatório (report list).
+Aplica negrito apenas à última coluna (td:last-child) de cada linha da tabela com ID reportList.
+— Normalmente é a coluna de valores ou totais.*/
   #reportList td:last-child {
     font-weight:700;
   }

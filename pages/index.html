@@ -35,14 +35,14 @@
 
         </ul>
 
-        <form class="login-header" method="post" name="login" id="loginForm">
-          <input type="text" class="campo" placeholder="Usuário" name="usuario" id="usuario">
-          <input type="password" class="campo" placeholder="Senha" name="senha" id="senha">
-          <button type="submit" class="btn-entrar">Entrar</button>          
+        <form id="loginForm" class="login-header">
+          <input type="text" id="usuario" placeholder="Usuário" required />
+          <input type="password" id="senha" placeholder="Senha" required />
+          <button type="submit" class="btn-entrar">Entrar</button>
         </form>
         
         <p id="mensagem"></p>
-        
+                   
       </div>
     </nav>    
   
@@ -125,10 +125,8 @@
         </div>
       </footer>
       
-      <script type="module" src="/src/scripts/index.js"></script>
-     
-
-    
+      <script src="/src/scripts/login.js"></script>  
+  
    </body>
 </html>
 

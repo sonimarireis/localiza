@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body>
+    <script>
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+      if (!usuarioLogado) {
+        alert("Você precisa estar logado para acessar esta página!");
+        window.location.href = "index.html";
+      }
+    </script>
+    
     <header>
       <div class="header-container">
         <div class="logo">
@@ -48,6 +56,32 @@
       </div>
     </footer>
     <script type="module" src="/src/scripts/protected.js"></script>
+    <script>
+      // Verifica se há usuário logado
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+    
+      // Se não estiver logado, redireciona para o login
+      if (!usuarioLogado) {
+        alert("Você precisa estar logado para acessar esta página!");
+        window.location.href = "index.html";
+      } else {
+        // Mostra o nome do usuário em algum lugar da tela (opcional)
+        const header = document.querySelector("header");
+        const saudacao = document.createElement("p");
+        saudacao.textContent = `Olá, ${usuarioLogado.nome}!`;
+        saudacao.style.margin = "10px";
+        saudacao.style.fontWeight = "bold";
+        header.appendChild(saudacao);
+      }
+    
+      // Função de logout
+      function logout() {
+        localStorage.removeItem("usuarioLogado");
+        alert("Você saiu da sua conta!");
+        window.location.href = "index.html";
+      }
+    </script>
+    
   </body>
 </html>
 
