@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lista de Produtos - WhatsApp</title>
+  <link rel="stylesheet" href="/src/styles/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="/public/img/logo.png" height="100" alt="Logo Localiza" />
+      </div>
+      <div class="titulo">
+        <h1>Lista de Produtos</h1>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Produtos</h2>
+      <div id="productsList" class="table-wrap"></div>
+      <button class="btn-enviar">Enviar WhatsApp</button>
+
+    </section>
+
+    <main>
+      <section class="product-whatsapp">
+        <h2>Lista de Produtos para WhatsApp</h2>
+    
+        <form id="pwForm" class="card">
+          <label>
+            Produto
+            <select id="pwProductSelect" required>
+              <option value="">Selecione um produto</option>
+            </select>
+          </label>
+    
+          <label>
+            Valor (R$)
+            <input type="number" id="pwPrice" required min="0" step="0.01" placeholder="Ex.: 5.50">
+          </label>
+    
+          <div class="actions">
+            <button type="submit" class="primary">Adicionar Valor</button>
+          </div>
+        </form>
+    
+        <div class="product-list"></div> <!-- Aqui a lista completa será renderizada -->
+    
+        <button class="btn-send-whatsapp">Enviar pelo WhatsApp</button>
+      </section>
+    </main>
+    
+  </main>
+
+  <footer>
+    <div class="footer-container">
+
+      <!-- BLOCO 1 - MAPS -->
+      <div class="map">
+        <h5> Localização </h5>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.284635748633!2d-51.2058141!3d-30.1309866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9519836b21478e13%3A0xa1adbf6ffa171c21!2sRua%20Oz%C3%B3rio%20Jos%C3%A9%20Martins%2C%20191%20-%20Campo%20Novo%2C%20Porto%20Alegre%20-%20RS%2C%2091750-032!5e0!3m2!1spt-BR!2sbr!4v1730903837998!5m2!1spt-BR!2sbr"
+          width="200px"  height="200px"  style="border:0;"  allowfullscreen=""  loading="lazy"  referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+
+      <div class="footer-links">
+        <h5> Contatos </h5>
+        <br>
+        <br>
+        <p> <img src="/public/img/telefone.png" width="40px" height="40px" a href="tel:+5551984673088">(51)98467-3088 Alex/Peixe</a></p>
+        <p> <a href="https://wa.me/5551984673088" target="_blank"></a></p>
+
+        <p> <img src="/public/img/telefone.png" width="40px" height="40px" a href="tel:+5551984818993">(51)984818993 Nícolas </a></p>
+        <p> <a href="https://wa.me/5551984818993" target="_blank"></a></p>
+      </div>
+        
+        <div class="copy">
+          <h5>Obrigado por ter visitado o nosso site ♡</h5>
+          <br>
+             
+          <div class="copy-marcas">
+            <img src="/public/img/logo.png"><br>
+            <p> Bier Fisch Distribidora de Bebidas e alimentos</p>               
+          </div>
+
+          <p>Copyright ©2025 | Todos os direitos reservados Sonimári Reis </p>
+        </div>
+    </div>
+  </footer>
+  
+  <script src="/src/scripts/login.js"></script>  
+
+</body>
+</html>
+
+
+

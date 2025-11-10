@@ -34,6 +34,20 @@
       </div>     
     </header>
 
+    <nav>
+      <div class="nav-container">  
+        <ul>
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="clientes.html">📦 Clientes</a></li>
+          <li><a href="produtos.html">👥 Produtos</a></li>
+          <li><a href="vendas.html">💰 Vendas</a></li>
+        </ul>
+    
+        <!-- Botão de Sair -->
+        <button id="btnLogout" class="btn-logout">Sair</button>
+      </div>
+    </nav>    
+
     <main>
       
       <section id="produtos" class="tab-panel active" role="tabpanel">
@@ -66,12 +80,8 @@
             <label>
               Validade
               <input type="date" id="pExpiry">
-            </label>          
-            <div class="actions">
-              <button type="submit" class="primary">Salvar</button>
-              <button type="reset" class="ghost">Limpar</button>
-            </div>                      
-           
+            </label>       
+                  
             <label>
             Categoria
              <select id="pCategory" required>
@@ -130,7 +140,6 @@
                   <span class="abbr">Est.</span></th>
                 <th><span class="full">Última Contagem</span>
                   <span class="abbr">C.E.</span></th>
-                <th>Valor R$</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -182,7 +191,7 @@
       </div>
     </footer>
     
-    <script type="module" src="/src/scripts/index.js"></script>  
+    <script type="module" src="/src/scripts/produtos.js"></script>
   
  </body>
 </html>

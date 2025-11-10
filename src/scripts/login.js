@@ -1,49 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("loginForm");
-    const mensagem = document.getElementById("mensagem");
-  
-    console.log("Login.js carregado com sucesso!");
-    console.log("Form encontrado?", form);
-  
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-  
-      console.log("Botão Entrar clicado!"); // confirma o clique
-  
-      const usuario = document.getElementById("usuario").value.trim();
-      const senha = document.getElementById("senha").value.trim();
-  
-      console.log("Usuário digitado:", usuario);
-      console.log("Senha digitada:", senha);
-  
-      // Busca usuários cadastrados
-      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-      console.log("Usuários cadastrados no localStorage:", usuarios);
-  
-      // Procura o usuário no array
-      const usuarioEncontrado = usuarios.find(
-        (u) => u.usuario === usuario && u.senha === senha
-      );
-  
-      if (usuarioEncontrado) {
-        console.log("✅ Usuário encontrado:", usuarioEncontrado);
-  
-        // Salva o login ativo
-        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
-  
-        mensagem.textContent = "✅ Login realizado com sucesso!";
-        mensagem.style.color = "green";
-        mensagem.style.fontWeight = "bold";
-  
-        // Redireciona após 1,5s
-        setTimeout(() => {
-          window.location.href = "clientes.html"; // página protegida
-        }, 1500);
-      } else {
-        console.log("❌ Usuário ou senha incorretos!");
-        mensagem.textContent = "❌ Usuário ou senha incorretos!";
-        mensagem.style.color = "red";
-      }
-    });
+  const form = document.getElementById("loginForm");
+  const mensagem = document.getElementById("mensagem");
+
+  console.log("✅ login.js carregado com sucesso!");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const usuario = document.getElementById("usuario").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+
+    console.log("Tentando login com:", usuario, senha);
+
+    // Busca os usuários cadastrados
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    console.log("Usuários cadastrados:", usuarios);
+
+    // Verifica se existe um usuário igual
+    const usuarioEncontrado = usuarios.find(
+      (u) => u.usuario === usuario && u.senha === senha
+    );
+
+    if (usuarioEncontrado) {
+      console.log("✅ Login bem-sucedido:", usuarioEncontrado);
+
+      mensagem.textContent = `Bem-vindo(a), ${usuarioEncontrado.nome}!`;
+      mensagem.style.color = "green";
+      mensagem.style.fontWeight = "bold";
+
+      // Salva usuário logado
+      localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+
+      // Redireciona após 1,5 segundos
+      setTimeout(() => {
+        window.location.href = "clientes.html";
+      }, 1500);
+    } else {
+      console.log("❌ Usuário ou senha incorretos");
+      mensagem.textContent = "❌ Usuário ou senha incorretos!";
+      mensagem.style.color = "red";
+    }
   });
-  
+});

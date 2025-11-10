@@ -57,6 +57,43 @@
     font-weight:600;  
   }
 
+  .nav-container {
+    display: flex;               /* organiza horizontalmente */
+    justify-content: space-between; /* links à esquerda, botão à direita */
+    align-items: center;         /* centraliza verticalmente */
+    padding: 10px 20px;
+    background-color:  #f6f568; /* ou a cor que estiver usando no header */
+  }
+  
+  .nav-container ul {
+    display: flex;        /* lista horizontal */
+    gap: 20px;            /* espaço entre os links */
+    list-style: none;     /* remove os bullets */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-container ul li a {
+    text-decoration: none;
+    color: var(--fg);     /* cor dos links */
+    font-weight: bold;
+  }
+
+  .btn-logout {
+    padding: 6px 12px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color:#38bdf8;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .btn-logout:hover {
+    background-color: #0066cc;
+  }
+    
   .date {
     padding: 16px; 
     border-bottom:1px solid var(--border); 
@@ -177,16 +214,30 @@
   
   /* Retira as setinhas de numeração (+ ou -), afetando somente o Firefox (que usa o motor Gecko, da Mozilla)*/
 
-  input[type="number"] { 
-    -moz-appearance:textfield; 
+  input[type="number"] {
+    -moz-appearance: textfield;    /* Firefox */
+    -webkit-appearance: none;      /* Chrome, Safari */
+    appearance: textfield;         /* Padrão */
   }
-  
+ 
  /* Retira as setinhas de numeração (+ ou -), afetando Chrome, Edge, Safari e Opera, que usam o motor WebKit (ou Blink, que deriva dele)*/
-  input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
-    -webkit-appearance:none; 
-    margin:0;
-  }  
+ select.custom {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
   
+  input[type="tel"] {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    width: 100%;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
   /* Agrupar botões de ação, agrupar conteúdo em linha (campos, textos, colunas)*/
   .actions, .row { 
     display:flex; 
@@ -256,6 +307,14 @@
   /*Cria um botão secundário, de aparência leve (“ghost” = “fantasma”), geralmente usado para ações menos importantes, como “Cancelar” ou “Limpar”*/
   button.ghost, .ghost { 
     background:#f7f7f7; 
+  }
+
+  .btn-enviar {
+    padding: 10px 14px;
+    background: #111;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
   }
   
   /*Define um texto discreto (“muted” = apagado, atenuado).
@@ -341,82 +400,86 @@ Aplica negrito apenas à última coluna (td:last-child) de cada linha da tabela 
     font-weight:700;
   }
 
-  /*FOOTER*/
-footer {
-  background: #ebe70b;
-  color: #000; /* preto */
-  padding: 20px 40px;
-  font-size: 18px;
-}  
+  *FOOTER*/
+  footer {
+    background: #ebe70b;
+    color: #000; /* preto */
+    padding: 20px 40px;
+    font-size: 18px;
+  }  
+  
+  .footer-container {
+    display: flex;              
+    justify-content: space-between; 
+    align-items: flex-start;    
+    gap: 20px;                  
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content:space-between;
+    align-items: center;
+    overflow-y: auto; 
+    margin-top: 30px;
+    background: #ebe70b;
 
-.footer-container {
-  display: flex;              
-  justify-content: space-between; 
-  align-items: flex-start;    
-  gap: 20px;                  
-  justify-content:space-between;
-  align-items: center;
-  overflow-y: auto; 
-  margin-top: 30px;
-}
-
-.footer-links h5,
-.map h5,
-.copy h5 {
-  margin-bottom: 5px;
-  font-size: 20px;
-  margin-top: 5px;
-}
-
-.footer-links a {
-  display: flex;             /* deixa o ícone + texto lado a lado */
-  align-items: center;       /* alinha no meio vertical */
-  margin: 10px 0;          
-  font-family:system-ui;
-  font-size: 18px;  
-  font-weight:bold !important;
-  color:black;
-}
-
-.footer-links a:hover{
- color: #333; 
-}
-
-.footer-links img {
-  margin-right: 10px;        /* distância entre ícone e texto */
-  transition: transform 0.2s ease;
-  cursor: pointer;
-  width: 20px;               /* 🔹 tamanho da imagem */
-  height: auto;   
-}
-
-.footer-links img:hover {
-  transform: scale(1.1);
-  /* filtro aproximado para #3ac9d3 */
-  filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1941%) hue-rotate(150deg) brightness(92%) contrast(94%);
-}
-
-.footer-links a:hover{
-  color: #d3d3d3;
-}
-/* ===== BLOCO COPYRIGHT ===== */
-.copy {
-  text-align: right;   
-}
-
-.copy p {
-  margin-top: 10px;  /* era 35px */
-  font-size: 16px;
-}
-
-.copy .copy-marcas {
-  margin-top: 20px;
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px; /* espaço entre as imagens */
-}
-
-.copy .copy-marcas img {
-  width: 110px;
-  height: auto;
-}
+  }
+  
+  .footer-links h5,
+  .map h5,
+  .copy h5 {
+    margin-bottom: 5px;
+    font-size: 20px;
+    margin-top: 5px;
+  }
+  
+  .footer-links a {
+    display: flex;             /* deixa o ícone + texto lado a lado */
+    align-items: center;       /* alinha no meio vertical */
+    margin: 10px 0;          
+    font-family:system-ui;
+    font-size: 18px;  
+    font-weight:bold !important;
+    color:black;
+  }
+  
+  .footer-links a:hover{
+   color: #333; 
+  }
+  
+  .footer-links img {
+    margin-right: 10px;        /* distância entre ícone e texto */
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    width: 20px;               /* 🔹 tamanho da imagem */
+    height: auto;   
+  }
+  
+  .footer-links img:hover {
+    transform: scale(1.1);
+    /* filtro aproximado para #3ac9d3 */
+    filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1941%) hue-rotate(150deg) brightness(92%) contrast(94%);
+  }
+  
+  .footer-links a:hover{
+    color: #d3d3d3;
+  }
+  /* ===== BLOCO COPYRIGHT ===== */
+  .copy {
+    text-align: right;   
+  }
+  
+  .copy p {
+    margin-top: 10px;  /* era 35px */
+    font-size: 16px;
+  }
+  
+  .copy .copy-marcas {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* espaço entre as imagens */
+  }
+  
+  .copy .copy-marcas img {
+    width: 110px;
+    height: auto;
+  }
+  
