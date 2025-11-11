@@ -337,6 +337,27 @@ table input {
     cursor: pointer;
   }
   
+  #numeroWhatsapp{
+    margin: 10px 10px 0 0;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .btn-whatsapp {
+    background-color: #38bdf8;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .btn-whatsapp:hover {
+    background-color: #0066cc;
+  }  
+
   /*Define um texto discreto (“muted” = apagado, atenuado).
   Normalmente é usado para informações secundárias, mensagens vazias ou observações.
   Ex. erro ou produto não encontrado.*/  

@@ -42,11 +42,12 @@
   
   <main>
     <h2>Selecionar Produtos para Venda</h2>
-
+  
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
+            <th>Selecionar</th>
             <th>Nome</th>
             <th>Validade</th>
             <th>Valor de Venda (R$)</th>
@@ -56,9 +57,25 @@
       </table>
     </div>
   
-    <button id="btnSalvar" class="btn-save">💾 Salvar Lista de Venda</button>
+    <div class="actions">
+      <label for="numeroWhatsapp">📱 Enviar para número:</label>
+      <input
+        type="text"
+        id="numeroWhatsapp"
+        placeholder="Ex: 51999999999"
+        maxlength="13"
+      />
+  
+      <div class="btn-group">
+        <button id="btnSalvar" class="btn-save">💾 Salvar Lista</button>
+        <button id="btnEnviarWhatsapp" class="btn-whatsapp">📤 Enviar pelo WhatsApp</button>
+      </div>
+    </div>
+  
     <p id="msgSucesso" class="success-msg"></p>
+
   </main>
+  
   
    <footer>
     <div class="footer-container">
@@ -96,7 +113,9 @@
     </div>
   </footer>
   
-  <script src="/src/scripts/produtos-whatsapp.js"></script>
+    <script src="/src/scripts/login.js"></script>
+    <script src="/src/scripts/produtos-whatsapp.js"></script>
+
 </body>
 </html>
 
