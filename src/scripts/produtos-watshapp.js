@@ -1,66 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const productSelect = document.getElementById("pwProductSelect");
-    const priceInput = document.getElementById("pwPrice");
-    const form = document.getElementById("product-whatsapp-form");
-    const productListDiv = document.querySelector(".product-list");
-    const btnWhatsapp = document.querySelector(".btn-send-whatsapp");
-  
-    // Puxa os produtos já cadastrados do localStorage da página produtos.html
-    let products = JSON.parse(localStorage.getItem("produtos")) || [];
-  
-    // Se algum produto não tiver "price", define como 0
-    products = products.map(p => ({ name: p.name, validade: p.validade, price: p.price || 0 }));
-  
-    // Preenche o select com os produtos existentes
-    function populateSelect() {
-      productSelect.innerHTML = '<option value="">Selecione um produto</option>';
-      products.forEach((p, index) => {
-        productSelect.innerHTML += `<option value="${index}">${p.name} - Validade: ${p.validade}</option>`;
-      });
+  const productListDiv = document.getElementById("productList");
+  const btnSalvar = document.getElementById("btnSalvar");
+  const msgSucesso = document.getElementById("msgSucesso");
+
+  // Busca produtos cadastrados
+  const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+  function renderProductList() {
+    productListDiv.innerHTML = "";
+
+    if (produtos.length === 0) {
+      productListDiv.innerHTML = `<tr><td colspan="3">Nenhum produto encontrado.</td></tr>`;
+      return;
     }
-  
-    populateSelect();
-  
-    // Renderiza a lista de produtos na página
-    function renderProductsList() {
-      if (products.length === 0) {
-        productListDiv.textContent = "Nenhum produto cadastrado.";
-        return;
-      }
-  
-      productListDiv.textContent = products
-        .map(p => `${p.name} - Validade: ${p.validade} - R$ ${p.price.toFixed(2)}`)
-        .join("\n");
-    }
-  
-    renderProductsList();
-  
-    // Cadastro do preço
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const index = productSelect.value;
-      const price = parseFloat(priceInput.value);
-  
-      if (index === "" || isNaN(price) || price < 0) {
-        alert("Selecione um produto e digite um valor válido.");
-        return;
-      }
-  
-      products[index].price = price;
-  
-      // Salva produtos no localStorage da lista WhatsApp
-      localStorage.setItem("productsWhatsapp", JSON.stringify(products));
-  
-      renderProductsList();
-      form.reset();
+
+    produtos.forEach(prod => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${prod.nome}</td>
+        <td>${prod.validade || "Não informada"}</td>
+        <td><input type="number" step="0.01" min="0" placeholder="0,00" data-codigo="${prod.codigo}"></td>
+      `;
+      productListDiv.appendChild(tr);
     });
-  
-    // Enviar pelo WhatsApp
-    btnWhatsapp.addEventListener("click", () => {
-      const phone = "55519864673088"; // Número do cliente
-      const message = encodeURIComponent(products.map(p => `${p.name} - Validade: ${p.validade} - R$ ${p.price.toFixed(2)}`).join("\n"));
-      const url = `https://wa.me/${phone}?text=${message}`;
-      window.open(url, "_blank");
+  }
+
+  // Renderiza tabela assim que a página abre
+  renderProductList();
+
+  // Botão salvar
+  btnSalvar.addEventListener("click", () => {
+    const inputs = document.querySelectorAll("input[data-codigo]");
+    const produtosVenda = [];
+
+    inputs.forEach(input => {
+      const codigo = input.dataset.codigo;
+      const valor = parseFloat(input.value) || 0;
+      const produto = produtos.find(p => p.codigo === codigo);
+
+      if (produto) {
+        produtosVenda.push({
+          nome: produto.nome,
+          validade: produto.validade,
+          valorVenda: valor
+        });
+      }
     });
-  }); // <-- fecha o DOMContentLoaded
-  
+
+    localStorage.setItem("produtosVenda", JSON.stringify(produtosVenda));
+
+    msgSucesso.textContent = "✅ Lista de produtos para venda salva com sucesso!";
+    setTimeout(() => (msgSucesso.textContent = ""), 4000);
+  });
+
+  // Logout
+  const btnLogout = document.getElementById("btnLogout");
+  if (btnLogout) {
+    btnLogout.addEventListener("click", () => {
+      localStorage.removeItem("usuarioLogado");
+      window.location.href = "index.html";
+    });
+  }
+});

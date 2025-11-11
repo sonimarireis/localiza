@@ -121,6 +121,20 @@
     box-sizing: border-box;
   }
   
+  /* Destacar validade próxima */
+td.expirando {
+  background-color: #ffe0e0;  /* fundo vermelho claro */
+  color: #b30000;             /* texto vermelho escuro */
+  font-weight: bold;
+}
+
+/* Destacar validade vencida */
+td.vencido {
+  background-color: #ffcccc;  /* fundo vermelho mais forte */
+  color: #800000;             /* vermelho escuro */
+  font-weight: bold;
+}
+
   .table-wrap {
     width: 100%;
     margin-top: 12px;
@@ -236,6 +250,12 @@
     width: 100%;
     font-family: inherit;
     box-sizing: border-box;
+}
+
+table input {
+  width: 100px;
+  padding: 5px;
+  text-align: right;
 }
 
   /* Agrupar botões de ação, agrupar conteúdo em linha (campos, textos, colunas)*/

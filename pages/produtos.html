@@ -41,6 +41,7 @@
           <li><a href="clientes.html">📦 Clientes</a></li>
           <li><a href="produtos.html">👥 Produtos</a></li>
           <li><a href="vendas.html">💰 Vendas</a></li>
+          <li><a href="produtos-whatsapp.html"> Produtos Whatsapp </a></li>
         </ul>
     
         <!-- Botão de Sair -->
@@ -75,13 +76,13 @@
             <label>
               Estoque 
               <input type="number" id="pMax" required min="0" step="1" placeholder="Ex.: 120">
-            </label>    
-
+            </label>     
+            
             <label>
               Validade
               <input type="date" id="pExpiry">
             </label>       
-                  
+                                    
             <label>
             Categoria
              <select id="pCategory" required>
@@ -101,7 +102,7 @@
             </select>
 
              <div class="actions">
-              <button type="submit" class="primary">Cadastrar</button>
+              <button type="submit">Cadastrar</button>
               <button type="reset" class="ghost">Limpar</button>
             </div>  
            </label>
@@ -136,16 +137,25 @@
               <tr>
                 <th>Código</th>
                 <th>Nome</th>
-                <th><span class="full">Estoque </span>
-                  <span class="abbr">Est.</span></th>
-                <th><span class="full">Última Contagem</span>
-                  <span class="abbr">C.E.</span></th>
+                <th>
+                  <span class="full">Estoque</span>
+                  <span class="abbr">Est.</span>
+                </th>
+                <th>
+                  <span class="full">Última Contagem</span>
+                  <span class="abbr">C.E.</span>
+                </th>
+                <!-- 👇 Nova coluna -->
+                <th>
+                  <span class="full">Validade</span>
+                  <span class="abbr">Val.</span>
+                </th>
                 <th>Ações</th>
               </tr>
             </thead>
             <tbody id="productsTable"></tbody>
-           </table>
-          </div>
+          </table>
+         </div>        
          </section>      
     </main>
 

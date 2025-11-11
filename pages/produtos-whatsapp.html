@@ -7,57 +7,60 @@
   <link rel="stylesheet" href="/src/styles/style.css">
 </head>
 <body>
-
+  <script>
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+    if (!usuarioLogado) {
+      alert("Você precisa estar logado para acessar esta página!");
+      window.location.href = "index.html";
+    }
+  </script>
+  
   <header>
     <div class="header-container">
       <div class="logo">
-        <img src="/public/img/logo.png" height="100" alt="Logo Localiza" />
+        <br />
+        <img src="/public/img/logo.png" height="170px" width="170px" alt="foto_logo" />
       </div>
       <div class="titulo">
-        <h1>Lista de Produtos</h1>
+        <h1>Localiza</h1>
       </div>
     </div>
   </header>
+  <nav>
+    <div class="nav-container">
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="clientes.html">📦 Clientes</a></li>
+        <li><a href="produtos.html">👥 Produtos</a></li>
+        <li><a href="vendas.html">💰 Vendas</a></li>         
+      </ul>
 
+      <!-- Botão de Sair -->
+      <button id="btnLogout" class="btn-logout">Sair</button>
+    </div>
+  </nav>
+  
   <main>
-    <section class="card">
-      <h2>Produtos</h2>
-      <div id="productsList" class="table-wrap"></div>
-      <button class="btn-enviar">Enviar WhatsApp</button>
+    <h2>Selecionar Produtos para Venda</h2>
 
-    </section>
-
-    <main>
-      <section class="product-whatsapp">
-        <h2>Lista de Produtos para WhatsApp</h2>
-    
-        <form id="pwForm" class="card">
-          <label>
-            Produto
-            <select id="pwProductSelect" required>
-              <option value="">Selecione um produto</option>
-            </select>
-          </label>
-    
-          <label>
-            Valor (R$)
-            <input type="number" id="pwPrice" required min="0" step="0.01" placeholder="Ex.: 5.50">
-          </label>
-    
-          <div class="actions">
-            <button type="submit" class="primary">Adicionar Valor</button>
-          </div>
-        </form>
-    
-        <div class="product-list"></div> <!-- Aqui a lista completa será renderizada -->
-    
-        <button class="btn-send-whatsapp">Enviar pelo WhatsApp</button>
-      </section>
-    </main>
-    
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Validade</th>
+            <th>Valor de Venda (R$)</th>
+          </tr>
+        </thead>
+        <tbody id="productList"></tbody>
+      </table>
+    </div>
+  
+    <button id="btnSalvar" class="btn-save">💾 Salvar Lista de Venda</button>
+    <p id="msgSucesso" class="success-msg"></p>
   </main>
-
-  <footer>
+  
+   <footer>
     <div class="footer-container">
 
       <!-- BLOCO 1 - MAPS -->
@@ -93,8 +96,7 @@
     </div>
   </footer>
   
-  <script src="/src/scripts/login.js"></script>  
-
+  <script src="/src/scripts/produtos-whatsapp.js"></script>
 </body>
 </html>
 
