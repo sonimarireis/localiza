@@ -46,6 +46,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
+  flex-wrap: wrap; /* 🔹 ajuda no responsivo */
 }
 
 
@@ -69,12 +70,14 @@ header {
   font-size: 40px;
   color: #bb260c;
   margin: 0;
+  white-space: nowrap; /* evita quebra de linha */
 }
 
 .login-header {
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-content: space-between;
 }
 
 .login-header input {

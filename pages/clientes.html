@@ -41,67 +41,63 @@
     </nav>
     
     <main>
-      <section id="produtos" class="tab-panel active" role="tabpanel">
+      <section id="clientes" class="tab-panel active" role="tabpanel">
         <form id="client-form" class="card">
-         <h2> Cadastro de Clientes </h2>
-
-         <div class="grid">
-                  
-          <label>
-            Nome
-            <input type="text" id="cName" required placeholder="Ex.: João da Silva">
-           </label>
-
-          <label>
-           Endereço
-           <input type="text" id="cAddress" required placeholder="Ex.: Ex.: Rua Exemplo, 123">
-          </label>
-
-          <label>
-            Telefone
-            <input type="tel" id="cPhone" required 
-                   placeholder="Ex.: 51987654321" 
-                   title="Digite exatamente 9 ou 11 números sem espaços ou traços" 
-                   maxlength="11">
-          </label>
-                    
+          <h2>Cadastro de Clientes</h2>
+    
+          <div class="grid">
+            <label>
+              Nome
+              <input type="text" id="cName" required placeholder="Ex.: João da Silva">
+            </label>
+    
+            <label>
+              Endereço
+              <input type="text" id="cAddress" required placeholder="Ex.: Rua Exemplo, 123">
+            </label>
+    
+            <label>
+              Telefone
+              <input type="tel" id="cPhone" required 
+                     placeholder="Ex.: 51987654321" 
+                     title="Digite exatamente 9 ou 11 números sem espaços ou traços" 
+                     maxlength="11">
+            </label>
           </div>
-         <br>
-
-         <div class="grid">
-         
-          <label>
-            Última compra
-           <input type="date" id="cLastPurchase" required>
-          </label> 
-         </div>
-        </section>  
-
-        <div class="actions">
-          <button type="submit" class="primary">Cadastrar</button>
-          <button type="reset" class="ghost">Limpar</button>
-        </div>  
-        
-        
-        <div class="card">
-          <div class="card-header">
-            <h2>Lista de Clientes</h2>
+    
+          <div class="grid">
+            <label>
+              Última compra
+              <input type="date" id="cLastPurchase" required>
+            </label> 
           </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Endereço</th>
-                  <th>Telefone</th>
-                  <th>Última Compra</th>
-                </tr>
-              </thead>
-              <tbody id="clientsTable"></tbody>
-            </table>
-          </div>
+    
+          <div class="actions">
+            <button type="submit" class="primary">Cadastrar</button>
+            <button type="reset" class="ghost">Limpar</button>
+          </div>  
+        </form>
+      </section>
+    
+      <div class="card">
+        <div class="card-header">
+          <h2>Lista de Clientes</h2>
         </div>
-       
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Última Compra</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="clientsTable"></tbody>
+          </table>
+        </div>
+      </div>
     </main>
 
     <footer>

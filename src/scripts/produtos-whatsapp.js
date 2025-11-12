@@ -9,19 +9,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const numeroWhatsappInput = document.getElementById("numeroWhatsapp");
 
   // ---------- Carrega produtos cadastrados ----------
-  const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+  const produtos = JSON.parse(localStorage.getItem("produtosLocaliza")) || [];
 
   function renderProductList() {
     productList.innerHTML = "";
 
     if (produtos.length === 0) {
-      productList.innerHTML = `<tr><td colspan="3">Nenhum produto encontrado.</td></tr>`;
+      productList.innerHTML = `<tr><td colspan="4">Nenhum produto encontrado.</td></tr>`;
       return;
     }
 
     produtos.forEach((prod, index) => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
+        <td>
+          <input type="checkbox" data-index="${index}">
+        </td>
         <td>${prod.nome}</td>
         <td>${prod.validade || "Não informada"}</td>
         <td>
@@ -30,7 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
             step="0.01" 
             min="0" 
             placeholder="0,00" 
-            data-index="${index}">
+            data-index="${index}" 
+            class="valor-venda">
         </td>
       `;
       productList.appendChild(tr);
@@ -42,20 +46,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ---------- Salvar lista de venda ----------
   btnSalvar.addEventListener("click", () => {
-    const inputs = document.querySelectorAll("input[type='number'][data-index]");
+    const checkboxes = document.querySelectorAll("input[type='checkbox'][data-index]");
     const produtosVenda = [];
 
-    inputs.forEach(input => {
-      const index = parseInt(input.dataset.index);
-      const valor = parseFloat(input.value) || 0;
-      const produto = produtos[index];
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        const index = parseInt(checkbox.dataset.index);
+        const produto = produtos[index];
+        const valorInput = document.querySelector(`input.valor-venda[data-index="${index}"]`);
+        const valor = parseFloat(valorInput?.value || 0);
 
-      produtosVenda.push({
-        nome: produto.nome,
-        validade: produto.validade,
-        valorVenda: valor
-      });
+        produtosVenda.push({
+          nome: produto.nome,
+          validade: produto.validade,
+          valorVenda: valor
+        });
+      }
     });
+
+    if (produtosVenda.length === 0) {
+      alert("Selecione ao menos um produto antes de salvar.");
+      return;
+    }
 
     localStorage.setItem("produtosVenda", JSON.stringify(produtosVenda));
 
@@ -65,7 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ---------- Enviar pelo WhatsApp ----------
   btnEnviarWhatsapp.addEventListener("click", () => {
+    const numero = numeroWhatsapp })
+  
     const numero = numeroWhatsappInput.value.trim();
+    console.log("📤 Enviando mensagem para:", numero);
 
     if (!numero) {
       alert("Informe um número de WhatsApp (somente números, ex: 51999999999).");
@@ -86,11 +101,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     mensagem += "\n_Enviado via Localiza_";
 
-    // Codifica e abre link do WhatsApp Web
     const textoCodificado = encodeURIComponent(mensagem);
-    const link = `https://wa.me/${numero}?text=${textoCodificado}`;
+    const whatsappLink = `https://wa.me/${numero}?text=${textoCodificado}`;
 
-    window.open(link, "_blank");
+    console.log("🔗 Link gerado:", whatsappLink);
+
+    // Abre o link em nova aba
+    window.open(whatsappLink, "_blank");
   });
 
   // ---------- Logout ----------
@@ -100,4 +117,4 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "index.html";
     });
   }
-});
+// <-- fecha o addEventListener e o script
