@@ -5,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Clientes</title>
     <link rel="stylesheet" type="text/css" href="/src/styles/style.css">
+    <link rel="icon" href="/public/img/logo.png" type="image/x-icon">
   </head>
   <body>
-    <script>
-      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-      if (!usuarioLogado) {
-        alert("Você precisa estar logado para acessar esta página!");
-        window.location.href = "index.html";
-      }
-    </script>
-    
+     
     <header>
       <div class="header-container">
         <div class="logo">
@@ -108,7 +102,6 @@
       </div>
     </footer>
 
-    <script type="module" src="/src/scripts/protected.js"></script>
     <script src="/src/scripts/vendas.js"></script>
 
   </body>

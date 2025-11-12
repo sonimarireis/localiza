@@ -1,56 +1,50 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ login.js carregado e funcional!");
+
   const form = document.getElementById("loginForm");
+  const usuarioInput = document.getElementById("usuario");
+  const senhaInput = document.getElementById("senha");
   const mensagem = document.getElementById("mensagem");
 
-  console.log("✅ login.js carregado e pronto!");
-
-  if (!form) {
-    console.error("⚠️ Formulário de login não encontrado!");
+  if (!form || !usuarioInput || !senhaInput || !mensagem) {
+    console.error("❌ IDs incorretos ou elementos não encontrados no HTML.");
     return;
   }
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  const mostrarMensagem = (texto, cor = "red") => {
+    mensagem.textContent = texto;
+    mensagem.style.color = cor;
+    mensagem.style.fontWeight = "bold";
+  };
 
-    const usuario = document.getElementById("usuario")?.value.trim();
-    const senha = document.getElementById("senha")?.value.trim();
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const usuario = usuarioInput.value.trim();
+    const senha = senhaInput.value.trim();
 
     if (!usuario || !senha) {
-      mensagem.textContent = "⚠️ Preencha todos os campos.";
-      mensagem.style.color = "orange";
+      mostrarMensagem("⚠️ Preencha todos os campos.", "orange");
       return;
     }
 
-    console.log("Tentando login com:", usuario, senha);
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    // Busca usuários cadastrados
-    const usuariosSalvos = JSON.parse(localStorage.getItem("usuarios")) || [];
-    console.log("Usuários encontrados:", usuariosSalvos);
+    if (!Array.isArray(usuarios) || usuarios.length === 0) {
+      mostrarMensagem("⚠️ Nenhum usuário cadastrado encontrado.", "orange");
+      return;
+    }
 
-    // Verifica se o usuário e senha correspondem
-    const usuarioEncontrado = usuariosSalvos.find(
+    const encontrado = usuarios.find(
       (u) => u.usuario === usuario && u.senha === senha
     );
 
-    if (usuarioEncontrado) {
-      console.log("✅ Login realizado com sucesso:", usuarioEncontrado);
-
-      mensagem.textContent = `✅ Bem-vindo(a), ${usuarioEncontrado.nome || usuario}!`;
-      mensagem.style.color = "green";
-      mensagem.style.fontWeight = "bold";
-
-      // Salva o usuário logado
-      localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
-
-      // Redireciona após 1.5s
-      setTimeout(() => {
-        window.location.href = "clientes.html";
-      }, 1500);
+    if (encontrado) {
+      mostrarMensagem(`✅ Bem-vindo(a), ${encontrado.nome || usuario}!`, "green");
+      localStorage.setItem("usuarioLogado", JSON.stringify(encontrado));
+      setTimeout(() => (window.location.href = "clientes.html"), 1500);
     } else {
-      console.warn("❌ Usuário ou senha incorretos!");
-      mensagem.textContent = "❌ Usuário ou senha incorretos!";
-      mensagem.style.color = "red";
-      mensagem.style.fontWeight = "bold";
+      mostrarMensagem("❌ Usuário ou senha incorretos!");
     }
   });
 });

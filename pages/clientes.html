@@ -7,14 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/src/styles/style.css">
   </head>
   <body>
-    <script>
-      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-      if (!usuarioLogado) {
-        alert("Você precisa estar logado para acessar esta página!");
-        window.location.href = "index.html";
-      }
-    </script>
-    
+       
     <header>
       <div class="header-container">
         <div class="logo">
@@ -133,7 +126,6 @@
       </div>
     </footer>
 
-    <script type="module" src="/src/scripts/protected.js"></script>
     <script type="module" src="/src/scripts/clientes.js"></script>
 
   </body>
