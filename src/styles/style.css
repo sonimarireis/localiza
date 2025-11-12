@@ -62,6 +62,35 @@ header {
   font-weight: 600;
 }
 
+.login-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.login-header input {
+  font-size: 15px;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-header .btn-entrar {
+  background-color: #38bdf8;
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.login-header .btn-entrar:hover {
+  background-color: #0066cc;
+}
+
 .nav-container {
   display: flex;
   /* organiza horizontalmente */
@@ -248,6 +277,15 @@ th .full {
     padding: 8px;
   }
 }
+
+@media print {
+  header,
+  nav,
+  footer,
+  .btn-imprimir {
+    display: none !important;
+  }
+}    
 
 /* cabeçalho dentro do Thead*/
 thead th {
@@ -607,3 +645,72 @@ Aplica negrito apenas à última coluna (td:last-child) de cada linha da tabela 
   width: 110px;
   height: auto;
 }
+
+/* Produto vencido (vermelho forte) */
+.vencido {
+  background-color: #e63946;
+  color: white;
+  font-weight: bold;
+}
+
+/* Produto com validade próxima (amarelo intenso) */
+.quase-vencendo {
+  background-color: #ffd60a;
+  color: black;
+  font-weight: bold;
+}
+
+.relatorio {
+  margin-top: 24px;
+}
+
+.relatorio__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 0.95rem;
+}
+
+.relatorio__table th,
+.relatorio__table td {
+  border: 1px solid var(--border, #ddd);
+  padding: 10px;
+  text-align: center;
+}
+
+.relatorio__table th {
+  background-color: var(--bg-header, #f5f5f5);
+  font-weight: 600;
+}
+
+.relatorio__total-row {
+  background-color: var(--bg-total, #eee);
+  font-weight: bold;
+}
+
+.btn-imprimir {
+  background-color: var(--primary, #2b6cb0);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.btn-imprimir:hover {
+  background-color: var(--primary-dark, #1e4e8c);
+}
+
+/* ---------- MODO IMPRESSÃO ---------- */
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+  }
+
+  .relatorio__table {
+    border: 1px solid #000;
+  }
