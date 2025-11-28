@@ -73,6 +73,35 @@ header {
   white-space: nowrap; /* evita quebra de linha */
 }
 
+/* Acessibilidade (direita) */
+.accessibility button {
+  background-color: #38bdf8;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.accessibility button:hover {
+  background-color: #8d1e09;
+  transform: scale(1.05);
+}
+
+.accessibility button:active {
+  transform: scale(0.97);
+}
+
+#zoomWrapper {
+  width: 100%;
+  display: block;
+  transform-origin: top left; /* redundante com JS, mas bom ter no CSS */
+  transition: transform 150ms ease;
+}
+
 .login-header {
   display: flex;
   align-items: center;

@@ -1,91 +1,101 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="/src/styles/main.css">
-    <link rel="icon" href="/public/img/logo.png" type="image/x-icon">
+    <link rel="icon" href="/public/img/logo.png">
     <title>Localiza</title>
-  </head>
+</head>
 
-  <body>
-    <header>
-      <div class="header-container">        
+<body>
+
+<div id="zoomWrapper">  <!-- ABRE AQUI -->
+
+<header>
+    <div class="header-container">
         <div class="logo">
-          <br>      
-          <img src="/public/img/logo.png" height="170px" width="170px" alt="foto_logo">
-        </div>    
+            <img src="/public/img/logo.png" height="90" width="90" alt="foto_logo">
+        </div>
         <div class="titulo">
-          <h1>Localiza</h1>
-        </div>    
-      </div>
-    </header>
+            <h1>Localiza</h1>
+        </div>
+        <div class="accessibility">
+            <button class="btn btn-primary" id="diminuir">A-</button>
+            <button class="btn btn-primary" id="aumentar">A+</button>
+        </div>
+    </div>
+</header>
 
-    <nav>
-      <div class="nav-container">  
+<nav>
+    <div class="nav-container">
         <ul>
-          <li><a href="index.html">🏠 Home</a></li>
-          <li><a href="clientes.html">📦 Clientes</a></li>
-          <li><a href="produtos.html">👥 Produtos</a></li>
-          <li><a href="vendas.html">💰 Vendas</a></li>
-          <p><a href="cadastro.html">Cadastrar novo usuário</a></p>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="clientes.html">📦 Clientes</a></li>
+            <li><a href="produtos.html">👥 Produtos</a></li>
+            <li><a href="vendas.html">💰 Vendas</a></li>
+            <p><a href="cadastro.html">Cadastrar novo usuário</a></p>
         </ul>
 
         <form id="loginForm" class="login-header">
-          <input type="text" id="usuario" placeholder="Usuário" required />
-          <input type="password" id="senha" placeholder="Senha" required />
-          <button type="submit" class="btn-entrar">Entrar</button>
+            <input type="text" id="usuario" placeholder="Usuário" required />
+            <input type="password" id="senha" placeholder="Senha" required />
+            <button type="submit" class="btn-entrar">Entrar</button>
         </form>
-        
+
         <p id="mensagem"></p>
-      </div>
-    </nav>    
+    </div>
+</nav>
 
-    <main>      
-      <h2>Ofertas BIER FISCH!</h2>
-      <div class="main-container">
+<main>
+    <h2>Ofertas BIER FISCH!</h2>
+    <div class="main-container">
         <div class="item">
-          <img src="/public/img/pepsi_2l.jpg" alt="Pepsi 2L">
-          <p>Pepsi 2L</p>
-          <p class="preco">R$7,39</p>
+            <img src="/public/img/pepsi_2l.jpg" alt="Pepsi 2L">
+            <p>Pepsi 2L</p>
+            <p class="preco">R$7,39</p>
         </div>
         <div class="item">
-          <img src="/public/img/polar_473ml.jpg" alt="Cerveja Polar 473ml">
-          <p>Cerveja Polar 473ml</p>
-          <p class="preco">R$4,39</p>
+            <img src="/public/img/polar_473ml.jpg" alt="Cerveja Polar 473ml">
+            <p>Cerveja Polar 473ml</p>
+            <p class="preco">R$4,39</p>
         </div>
         <div class="item">
-          <img src="/public/img/oleo.jpg" alt="Óleo de Soja Vitaliv 900ml">
-          <p>Óleo de soja Vitaliv 900ml</p>
-          <p class="preco">R$8,49</p>
+            <img src="/public/img/oleo.jpg" alt="Óleo de Soja Vitaliv 900ml">
+            <p>Óleo de soja Vitaliv 900ml</p>
+            <p class="preco">R$8,49</p>
         </div>
-      </div>
-    </main>
+    </div>
+</main>
 
-    <footer>
-      <div class="footer-container">
+<footer>
+    <div class="footer-container">
         <div class="map">
-          <h5>Localização</h5>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="200px" height="200px" style="border:0;" allowfullscreen loading="lazy"></iframe>
+            <h5>Localização</h5>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="200" height="200" style="border:0;" loading="lazy"></iframe>
         </div>
 
         <div class="footer-links">
-          <h5>Contatos</h5>
-          <p><img src="/public/img/telefone.png" width="40px" height="40px">(51)98467-3088 Alex/Peixe</p>
-          <p><img src="/public/img/telefone.png" width="40px" height="40px">(51)98481-8993 Nícolas</p>
+            <h5>Contatos</h5>
+            <p><img src="/public/img/telefone.png" width="40" height="40">(51)98467-3088 Alex/Peixe</p>
+            <p><img src="/public/img/telefone.png" width="40" height="40">(51)98481-8993 Nícolas</p>
         </div>
-            
+
         <div class="copy">
-          <h5>Obrigado por ter visitado o nosso site ♡</h5>
-          <div class="copy-marcas">
-            <img src="/public/img/logo.png"><br>
-            <p>Bier Fisch Distribuidora de Bebidas e Alimentos</p>               
-          </div>
-          <p>Copyright ©2025 | Todos os direitos reservados Sonimári Reis</p>
+            <h5>Obrigado por ter visitado o nosso site ♡</h5>
+            <div class="copy-marcas">
+                <img src="/public/img/logo.png"><br>
+                <p>Bier Fisch Distribuidora de Bebidas e Alimentos</p>
+            </div>
+            <p>Copyright ©2025 | Todos os direitos reservados Sonimári Reis</p>
         </div>
-      </div>
-    </footer>
-      
-    <script src="./src/scripts/login.js"></script>  
-  </body>
+    </div>
+</footer>
+
+</div> <!-- FECHA AQUI, AGORA ESTÁ CERTO -->
+
+<script src="./src/scripts/accessibility.js"></script>
+<script src="./src/scripts/login.js"></script>
+
+</body>
 </html>
