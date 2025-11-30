@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+
+  if (!usuarioLogado) {
+    // Não deixa entrar!
+    window.location.href = "/pages/index.html";
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
   console.log("✅ vendas.js carregado e vinculado a produtos.js");
 
   const tabelaBody = document.querySelector("#tabelaVendas tbody");

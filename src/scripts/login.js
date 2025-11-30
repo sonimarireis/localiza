@@ -42,7 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (encontrado) {
       mostrarMensagem(`✅ Bem-vindo(a), ${encontrado.nome || usuario}!`, "green");
       localStorage.setItem("usuarioLogado", JSON.stringify(encontrado));
-      setTimeout(() => (window.location.href = "clientes.html"), 1500);
+      setTimeout(() => {
+        window.location.href = "/pages/clientes.html";
+      }, 1500);
     } else {
       mostrarMensagem("❌ Usuário ou senha incorretos!");
     }

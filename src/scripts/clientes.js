@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+
+  if (!usuarioLogado) {
+    // Não deixa entrar!
+    window.location.href = "/pages/index.html";
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("client-form");
   const tableBody = document.getElementById("clientsTable");
 
@@ -70,6 +79,19 @@ document.addEventListener("DOMContentLoaded", () => {
           <button class="btn-excluir" data-index="${index}">Excluir</button>
         </td>
       `;
+
+      // --- VERIFICAR DIAS SEM COMPRA ---
+      const hoje = new Date();
+      const ultimaCompra = new Date(cliente.ultimaCompra);
+
+      const diffMs = hoje - ultimaCompra;
+      const diffDias = diffMs / (1000 * 60 * 60 * 24);
+
+      if (diffDias > 14) {
+        tr.style.backgroundColor = "rgba(255, 0, 0, 0.25)"; // leve vermelho
+        tr.style.fontWeight = "bold";
+      }
+
 
       tableBody.appendChild(tr);
     });

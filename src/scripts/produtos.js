@@ -1,4 +1,13 @@
-// produtos.js
+// 🔒 Proteção de acesso
+document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+
+  if (!usuarioLogado) {
+    // Não deixa entrar!
+    window.location.href = "/pages/index.html";
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ produtos.js carregado!");
 
