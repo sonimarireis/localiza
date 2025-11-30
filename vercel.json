@@ -1,0 +1,15 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": null,
+  "rewrites": [
+    { "source": "/", "destination": "/pages/index.html" },
+    { "source": "/:page.html", "destination": "/pages/:page.html" },
+    { "source": "/clientes", "destination": "/pages/clientes.html" },
+    { "source": "/vendas", "destination": "/pages/vendas.html" },
+    { "source": "/produtos", "destination": "/pages/produtos.html" },
+    { "source": "/cadastro", "destination": "/pages/cadastro.html" }
+  ]
+}
+
+

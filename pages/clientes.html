@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="/src/styles/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="/public/img/logo.png">
+  <title>Clientes</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <br />
+        <img src="/public/img/logo.png" height="90px" width="90px" alt="foto_logo" />
+      </div>
+
+      <div class="titulo">
+        <h1>Localiza</h1>
+      </div>
+
+      <div class="accessibility">
+        <button id="aumentar" class="btn btn-primary">A+</button>
+        <button id="diminuir" class="btn btn-primary">A-</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="nav-container">
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="clientes.html">📦 Clientes</a></li>
+        <li><a href="produtos.html">👥 Produtos</a></li>
+        <li><a href="vendas.html">💰 Vendas</a></li>
+      </ul>
+
+      <!-- Botão de Sair -->
+      <button id="btnLogout" class="btn-logout">Sair</button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="clientes" class="tab-panel active" role="tabpanel">
+      <form id="client-form" class="card">
+        <h2>Cadastro de Clientes</h2>
+
+        <div class="grid">
+          <label>
+            Nome
+            <input type="text" id="cName" required placeholder="Ex.: João da Silva">
+          </label>
+
+          <label>
+            CPF
+            <input type="text" id="cCPF" required placeholder="000.000.000-00" maxlength="14">
+          </label>
+
+
+          <label>
+            Endereço
+            <input type="text" id="cAddress" required placeholder="Ex.: Rua Exemplo, 123">
+          </label>
+
+          <label>
+            Telefone
+            <input type="tel" id="cPhone" required placeholder="Ex.: 51987654321"
+              title="Digite exatamente 9 ou 11 números sem espaços ou traços" maxlength="11">
+          </label>
+        </div>
+
+        <div class="grid">
+          <label>
+            Última compra
+            <input type="date" id="cLastPurchase" required>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="primary">Cadastrar</button>
+          <button type="reset" class="ghost">Limpar</button>
+        </div>
+      </form>
+    </section>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Lista de Clientes</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Endereço</th>
+              <th>Telefone</th>
+              <th>Última Compra</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="clientsTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+
+      <!-- BLOCO 1 - MAPS -->
+      <div class="map">
+        <h5> Localização </h5>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.284635748633!2d-51.2058141!3d-30.1309866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9519836b21478e13%3A0xa1adbf6ffa171c21!2sRua%20Oz%C3%B3rio%20Jos%C3%A9%20Martins%2C%20191%20-%20Campo%20Novo%2C%20Porto%20Alegre%20-%20RS%2C%2091750-032!5e0!3m2!1spt-BR!2sbr!4v1730903837998!5m2!1spt-BR!2sbr"
+          width="200px" height="200px" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+
+      <div class="footer-links">
+        <h5> Contatos </h5>
+        <br>
+        <br>
+        <p> <img src="/public/img/telefone.png" width="40px" height="40px" a
+            href="tel:+5551984673088">(51)98467-3088
+          Alex/Peixe</a></p>
+        <p> <a href="https://wa.me/5551984673088" target="_blank"></a></p>
+
+        <p> <img src="/public/img/telefone.png" width="40px" height="40px" a
+            href="tel:+5551984818993">(51)984818993
+          Nícolas </a></p>
+        <p> <a href="https://wa.me/5551984818993" target="_blank"></a></p>
+      </div>
+
+      <div class="copy">
+        <h5>Obrigado por ter visitado o nosso site ♡</h5>
+        <div class="copy-marcas">
+          <img src="/public/img/logo.png" alt="Logo Localiza" /><br />
+          <p>Bier Fisch Distribuidora de Bebidas e Alimentos</p>
+        </div>
+        <p>Copyright ©2025 | Todos os direitos reservados Sonimári Reis</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../src/scripts/accessibility.js"></script>
+  <script type="module" src="/src/scripts/clientes.js"></script>
+
+</body>
+
+</html>
