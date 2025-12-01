@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const usuarioLogado = localStorage.getItem("usuarioLogado");
 
   if (!usuarioLogado) {
-    // Não deixa entrar!
     window.location.href = "/pages/index.html";
   }
 });
@@ -16,10 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const msgSucesso = document.getElementById("msgSucesso");
   const numeroWhatsapp = document.getElementById("numeroWhatsapp");
 
-  // --- Carrega produtos salvos ou cria lista vazia ---
-  let produtosVenda = JSON.parse(localStorage.getItem("produtosVenda")) || [];
+  let produtosVenda = [];
 
-  // --- Função para renderizar tabela ---
+  // ===== Funções =====
+  async function carregarProdutosVenda() {
+    try {
+      const res = await fetch("http://localhost:3000/produtos-whatsapp");
+      produtosVenda = await res.json();
+      renderTabela();
+    } catch (err) {
+      console.error("Erro ao carregar produtos WhatsApp:", err);
+    }
+  }
+
   function renderTabela() {
     tabela.innerHTML = "";
 
@@ -55,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tabela.appendChild(tr);
     });
 
-    // Adiciona eventos aos campos de valor
+    // Atualiza valores conforme digita
     document.querySelectorAll(".input-valor").forEach(input => {
       input.addEventListener("input", e => {
         const index = e.target.dataset.index;
@@ -64,19 +72,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  renderTabela();
+  async function salvarLista() {
+    try {
+      const res = await fetch("http://localhost:3000/produtos-whatsapp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(produtosVenda)
+      });
 
-  // --- Função de salvar lista no localStorage ---
-  function salvarLista() {
-    localStorage.setItem("produtosVenda", JSON.stringify(produtosVenda));
-    msgSucesso.textContent = "✅ Lista salva com sucesso!";
-    msgSucesso.style.color = "green";
-    setTimeout(() => (msgSucesso.textContent = ""), 2000);
+      const data = await res.json();
+      msgSucesso.textContent = "✅ Lista salva com sucesso!";
+      msgSucesso.style.color = "green";
+      setTimeout(() => (msgSucesso.textContent = ""), 2000);
+      console.log(data.msg);
+    } catch (err) {
+      console.error("Erro ao salvar lista:", err);
+      alert("Erro ao salvar lista.");
+    }
   }
 
   btnSalvar.addEventListener("click", salvarLista);
 
-  // --- Função de enviar pelo WhatsApp ---
   btnEnviarWhatsapp.addEventListener("click", () => {
     const numero = numeroWhatsapp.value.replace(/\D/g, "");
     if (!numero) {
@@ -103,4 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const url = `https://wa.me/55${numero}?text=${texto}`;
     window.open(url, "_blank");
   });
+
+  // Carrega produtos ao abrir
+  carregarProdutosVenda();
 });

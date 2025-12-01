@@ -1,36 +1,35 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const formCadastro = document.getElementById("cadastroForm");
-  const mensagem = document.getElementById("mensagemCadastro");
+// arquivo: src/script/cadastro.js
+const formCadastro = document.getElementById('cadastroForm');
 
-  formCadastro.addEventListener("submit", function (event) {
-    event.preventDefault();
+formCadastro.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    const nome = document.getElementById("nome").value.trim();
-    const usuario = document.getElementById("usuario").value.trim();
-    const senha = document.getElementById("senha").value.trim();
+  const nome = document.getElementById('nome').value.trim();
+  const usuario = document.getElementById('usuario').value.trim();
+  const senha = document.getElementById('senha').value.trim();
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  if (!nome || !usuario || !senha) {
+    alert('Preencha todos os campos.');
+    return;
+  }
 
-    const usuarioExistente = usuarios.find(u => u.usuario === usuario);
+  try {
+    const res = await fetch('http://localhost:3000/usuarios', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ usuario, senha, nome }) // envia também nome se quiser salvar
+    });
 
-    if (usuarioExistente) {
-      mensagem.textContent = "❌ Usuário já existe!";
-      mensagem.style.color = "red";
-      return;
+    const data = await res.json();
+
+    if (res.ok) {
+      alert(data.msg); // cadastrado com sucesso
+      window.location.href = 'login.html';
+    } else {
+      alert(data.msg); // usuário já existe
     }
-
-    usuarios.push({ nome, usuario, senha });
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-    mensagem.textContent = "✅ Usuário cadastrado com sucesso!";
-    mensagem.style.color = "green";
-    mensagem.style.fontWeight = "bold";
-
-    formCadastro.reset();
-
-    setTimeout(() => {
-      window.location.href = "/pages/index.html";
-
-    }, 1200);
-  });
+  } catch (err) {
+    console.error(err);
+    alert('Erro ao cadastrar usuário. Verifique se o backend está rodando.');
+  }
 });
