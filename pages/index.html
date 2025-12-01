@@ -4,10 +4,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="../src/styles/index.css">">
+ <link rel="stylesheet" href="/src/styles/index.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" href="/public/img/logo.png">
   <title>Localiza</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 
 <body>
@@ -49,24 +50,23 @@
   </nav>
 
   <main>
-    <h2>Ofertas BIER FISCH!</h2>
-    <div class="main-container">
-      <div class="item">
-        <img src="/public/img/pepsi_2l.jpg" alt="Pepsi 2L">
-        <p>Pepsi 2L</p>
-        <p class="preco">R$7,39</p>
-      </div>
-      <div class="item">
-        <img src="/public/img/polar_473ml.jpg" alt="Cerveja Polar 473ml">
-        <p>Cerveja Polar 473ml</p>
-        <p class="preco">R$4,39</p>
-      </div>
-      <div class="item">
-        <img src="/public/img/oleo.jpg" alt="Óleo de Soja Vitaliv 900ml">
-        <p>Óleo de soja Vitaliv 900ml</p>
-        <p class="preco">R$8,49</p>
-      </div>
-    </div>
+    <h1>Localiza - Importação CSV</h1>
+
+    <input type="file" id="csvFileInput" accept=".csv" />
+    <button id="importButton">Importar CSV</button>
+
+    <h2>Produtos importados:</h2>
+    <table border="1" id="tabelaProdutos">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
   </main>
 
   <footer>
@@ -94,9 +94,10 @@
       </div>
     </div>
   </footer>
-  
- <script type="module" src="../src/script/cadastro.js"></script>
+
+  <script type="module" src="/src/script/cadastro.js"></script>
   <script type="module" src="/src/accessibility.js"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>
